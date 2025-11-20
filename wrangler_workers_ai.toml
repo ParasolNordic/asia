@@ -1,0 +1,29 @@
+# Cloudflare Workers Configuration (wrangler.toml)
+# 
+# Käyttää Cloudflare Workers AI:ta (Meta Llama)
+
+name = "ai-proxy"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Workers AI binding
+# Tämä antaa access AI-malleihin
+[ai]
+binding = "AI"
+
+# Deployment URL tulee olemaan:
+# https://ai-proxy.arkisto-kaksi.workers.dev
+
+# Julkiset muuttujat
+[vars]
+ALLOWED_ORIGINS = "*"  # Tuotannossa: "https://yourdomain.com"
+MAX_TOKENS_LIMIT = 150
+
+# EI TARVITSE API-AVAINTA!
+# Workers AI on sisäänrakennettu Cloudflare Workersiin.
+# 
+# Hinnoittelu:
+# - Workers Paid Plan ($5/mo): 10,000 neurons/day ilmaiseksi
+# - Sen jälkeen: $0.011 per 1,000 neurons
+# 
+# Neurons ≈ tokens (karkeasti 1:1)

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mannerheimin Aasian-matka</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Pääotsikko -->
+  <header>
+    <h1>Mannerheimin Aasian-matka</h1>
+    <p class="subtitle">Interaktiivinen karavaanistrategiapeli</p>
+  </header>
+
+  <!-- Pelin container -->
+  <main>
+    <!-- Scene-alue -->
+    <div id="game-container"></div>
+
+    <!-- Valinnat-alue -->
+    <div id="choices-container"></div>
+
+    <!-- Debug-paneeli -->
+    <aside id="debug-panel" class="debug-panel">
+      <h3>Debug Info</h3>
+      <p>Ladataan...</p>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Mannerheimin Aasian-matka | <a href="#" id="toggle-debug">Toggle Debug</a></p>
+  </footer>
+
+  <!-- AI Proxy Configuration -->
+  <script>
+    // Aseta tämä true jos haluat käyttää AI-dialogeja
+    window.AI_PROXY_ENABLED = false; // Vaihda true kun Cloudflare Worker on valmis
+    window.AI_PROXY_URL = 'https://ai-proxy.arkisto-kaksi.workers.dev';
+  </script>
+
+  <!-- Main script (ES6 modules) -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+/* Mannerheimin Aasian-matka - Styles */
+
+:root {
+  --primary-color: #3d4f5c;
+  --secondary-color: #8b9da9;
+  --accent-color: #d4a76a;
+  --bg-color: #f5f5f0;
+  --text-color: #2a2a2a;
+  --border-color: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  line-height: 1.8;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+header .subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* Main container */
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 1024px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  
+  .debug-panel {
+    order: 1;
+  }
+}
+
+/* Game container */
+#game-container {
+  background: white;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  min-height: 400px;
+}
+
+.scene {
+  max-width: 800px;
+}
+
+.scene h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.scene p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.scene em {
+  color: var(--accent-color);
+  font-style: italic;
+}
+
+.npc-intro {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+.internal-monologue {
+  background: rgba(0,0,0,0.02);
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #666;
+}
+
+.narrative {
+  margin: 1rem 0;
+  color: #333;
+}
+
+.narrative strong {
+  color: var(--primary-color);
+}
+
+.narrative-end {
+  text-align: center;
+  font-style: italic;
+  margin-top: 2rem;
+  color: #777;
+  font-size: 1.05rem;
+}
+
+/* NPC Response */
+.npc-response {
+  background: #f9f9f9;
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+
+.npc-response h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.npc-response p {
+  color: #333;
+  font-size: 1.05rem;
+}
+
+/* Choices container */
+#choices-container {
+  margin-top: 2rem;
+}
+
+.choice-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.choice-button:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+  transform: translateX(5px);
+}
+
+.choice-button:active {
+  transform: translateX(3px);
+}
+
+.choice-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  margin-right: 1rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.choice-button:hover .choice-number {
+  background: white;
+  color: var(--accent-color);
+}
+
+.choice-text {
+  flex: 1;
+}
+
+/* AI Dialogue */
+.ai-dialogue-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.ai-dialogue-container h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+#ai-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+#ai-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.ai-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.ai-buttons .choice-button {
+  flex: 1;
+  justify-content: center;
+}
+
+.choice-button.primary {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.choice-button.primary:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.choice-button.secondary {
+  background: white;
+  color: var(--primary-color);
+}
+
+.ai-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 3rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error */
+.error-message {
+  background: #fee;
+  border: 2px solid #fcc;
+  padding: 2rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.error-message p {
+  color: #c33;
+  margin-bottom: 1rem;
+}
+
+/* Debug panel */
+.debug-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+  font-size: 0.9rem;
+}
+
+.debug-panel h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.debug-section {
+  margin-bottom: 1.5rem;
+}
+
+.debug-section h4 {
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.25rem;
+}
+
+.debug-section div {
+  padding: 0.25rem 0;
+  color: #555;
+}
+
+.debug-section .empty {
+  color: #999;
+  font-style: italic;
+}
+
+.debug-panel.hidden {
+  display: none;
+}
+
+/* Footer */
+footer {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+
+footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  #game-container {
+    padding: 1.5rem;
+  }
+
+  .scene h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .debug-panel,
+  #choices-container,
+  footer {
+    display: none;
+  }
+}
