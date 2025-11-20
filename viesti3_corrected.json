@@ -1,0 +1,582 @@
+{
+  "module": "prologue_state_machine",
+  "version": "2.0",
+  "description": "Prologin tilakone ja valintapuu. Kaikki siirtymät taataan aina toteutuvan (no hard locks). Scene ID:t yhtenäistetty viesti2.json ja viesti5.json kanssa.",
+  
+  "entry_state": "PROLOGUE_START",
+  "exit_state": "PROLOGUE_END",
+  "next_module": "ACT_I_TIE_ETELAAN",
+
+  "states": {
+    "PROLOGUE_START": {
+      "type": "system",
+      "description": "Prologin aloitus - alustetaan muuttujat",
+      "on_enter": [
+        {
+          "action": "init_prologue_variables",
+          "params": {
+            "initialize_factions": [
+              "RUS", "RUS_SCI", "BRIT", "QING", "TIIBET", 
+              "TURKESTAN", "CLANS", "ARCH_SCI", "BANDITS", "RELIG_TRACK"
+            ],
+            "initialize_player_traits": ["INDEPENDENCE", "NEUTRALITY"],
+            "initialize_npcs": ["trepov", "kf", "samsonov", "sokolov"],
+            "all_start_at_zero": true
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "to": "SCENE_1",
+          "condition": "always",
+          "trigger": "automatic"
+        }
+      ]
+    },
+
+    "SCENE_1": {
+      "type": "scene",
+      "scene_id": "1_pietarin_talvisumu",
+      "scene_name": "Pietarin talvisumu",
+      "description": "Mannerheim pohtii matkan merkitystä Pietarin talvisessa sumussa.",
+      "data_source": {
+        "narrative": "viesti5.json -> scenes[0]",
+        "choices": "viesti2.json -> acts[0]"
+      },
+      "choices": [
+        {
+          "id": "duty",
+          "display_text": "Kutsua on toteltava.",
+          "next": "SCENE_2"
+        },
+        {
+          "id": "restart",
+          "display_text": "Tämä matka voi olla alkuni uudestaan.",
+          "next": "SCENE_2"
+        },
+        {
+          "id": "escape",
+          "display_text": "Haluan vain pois Pietarista.",
+          "next": "SCENE_2"
+        }
+      ],
+      "on_choice": [
+        {
+          "action": "apply_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json",
+            "scene": "1_pietarin_talvisumu",
+            "choice_id": "selected_choice_id"
+          }
+        }
+      ]
+    },
+
+    "SCENE_2": {
+      "type": "scene",
+      "scene_id": "2_trepov_meeting",
+      "scene_name": "Ensitapaaminen Trepovin kanssa",
+      "description": "Sisäministeriön raskaat ovet sulkeutuvat. Trepov testaa lojaalisuutta.",
+      "data_source": {
+        "narrative": "viesti5.json -> scenes[1]",
+        "choices": "viesti2.json -> acts[1].linear_choices"
+      },
+      "choices": [
+        {
+          "id": "trepov_yes",
+          "display_text": "Olen käytettävissänne.",
+          "next": "SCENE_2_POST"
+        },
+        {
+          "id": "trepov_neutral",
+          "display_text": "Haluan ymmärtää, mitä todella odotatte.",
+          "next": "SCENE_2_POST"
+        },
+        {
+          "id": "trepov_resist",
+          "display_text": "Tehtävä vaikuttaa poliittiselta riskiltä.",
+          "next": "SCENE_2_POST"
+        }
+      ],
+      "on_choice": [
+        {
+          "action": "apply_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json",
+            "scene": "2_trepov_meeting",
+            "choice_id": "selected_choice_id"
+          }
+        }
+      ]
+    },
+
+    "SCENE_2_POST": {
+      "type": "hub",
+      "description": "Valintakeskus: pelaaja voi halutessaan käydä AI-dialogin Trepovin kanssa",
+      "ai_dialogue": {
+        "optional": true,
+        "npc_id": "trepov",
+        "trigger_text": "Haluan keskustella tehtävästä tarkemmin.",
+        "skip_text": "Jatka eteenpäin",
+        "ai_state": "SCENE_2_AI_TREPOV"
+      },
+      "transitions": [
+        {
+          "to": "SCENE_2_AI_TREPOV",
+          "condition": "player_selects_ai_dialogue",
+          "trigger": "player_input"
+        },
+        {
+          "to": "SCENE_3",
+          "condition": "player_skips_dialogue",
+          "trigger": "player_input"
+        }
+      ]
+    },
+
+    "SCENE_2_AI_TREPOV": {
+      "type": "ai_dialogue",
+      "npc_id": "trepov",
+      "npc_name": "Dmitri Trepov",
+      "dialogue_config": {
+        "npc_profile_source": "viesti4.json -> npcs[0] (trepov)",
+        "scene_context": "2_trepov_meeting",
+        "allowed_topics": [
+          "Venäjän asema Aasiassa",
+          "Kiinan heikkous ja suurvaltapeli",
+          "Lojaalisuus keisarille",
+          "Ranskan retkikunnan hyödyntäminen peitteenä"
+        ],
+        "forbidden_topics": [
+          "Sisäministeriön sisäiset valtataistelut",
+          "Suorat kysymykset Trepovin vihollisista",
+          "Syyttely tai moraalinen kritiikki Venäjää kohtaan"
+        ]
+      },
+      "on_complete": [
+        {
+          "action": "apply_ai_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json -> acts[1].ai_dialogue",
+            "ai_worker_output": "runtime_analysis_result"
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "to": "SCENE_3",
+          "condition": "always",
+          "trigger": "dialogue_end"
+        }
+      ]
+    },
+
+    "SCENE_3": {
+      "type": "scene",
+      "scene_id": "3_kf_briefing",
+      "scene_name": "K.F. antaa salaisen tehtävän",
+      "description": "Yleisesikunnan karttahuone. K.F. paljastaa tehtävän kaksihaaran luonteen.",
+      "data_source": {
+        "narrative": "viesti5.json -> scenes[2]",
+        "choices": "viesti2.json -> acts[2].linear_choices"
+      },
+      "choices": [
+        {
+          "id": "kf_accept",
+          "display_text": "Hyväksy tehtävä ilman lisäkysymyksiä.",
+          "next": "SCENE_3_POST"
+        },
+        {
+          "id": "kf_clans",
+          "display_text": "Vaadi autonomiaa joukon valintaan.",
+          "next": "SCENE_3_POST"
+        },
+        {
+          "id": "kf_political",
+          "display_text": "Kyseenalaista poliittinen motiivi.",
+          "next": "SCENE_3_POST"
+        }
+      ],
+      "on_choice": [
+        {
+          "action": "apply_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json",
+            "scene": "3_kf_briefing",
+            "choice_id": "selected_choice_id"
+          }
+        }
+      ]
+    },
+
+    "SCENE_3_POST": {
+      "type": "hub",
+      "description": "Valintakeskus: pelaaja voi halutessaan käydä AI-dialogin K.F.:n kanssa",
+      "ai_dialogue": {
+        "optional": true,
+        "npc_id": "kf",
+        "trigger_text": "Haluan tietää riskit ennen kuin suostun.",
+        "skip_text": "Jatka eteenpäin",
+        "ai_state": "SCENE_3_AI_KF"
+      },
+      "transitions": [
+        {
+          "to": "SCENE_3_AI_KF",
+          "condition": "player_selects_ai_dialogue",
+          "trigger": "player_input"
+        },
+        {
+          "to": "SCENE_4",
+          "condition": "player_skips_dialogue",
+          "trigger": "player_input"
+        }
+      ]
+    },
+
+    "SCENE_3_AI_KF": {
+      "type": "ai_dialogue",
+      "npc_id": "kf",
+      "npc_name": "Everstiluutnantti K.F.",
+      "dialogue_config": {
+        "npc_profile_source": "viesti4.json -> npcs[1] (kf)",
+        "scene_context": "3_kf_briefing",
+        "allowed_topics": [
+          "Xinjiangin epävakaus",
+          "Gansun reitti ja sen strateginen merkitys",
+          "Pelliot'n retkikunnan laatu",
+          "Salaisen viestinnän hoito matkan aikana"
+        ],
+        "forbidden_topics": [
+          "Trepovin kritisointi",
+          "Sisäministeriön valtarakenteet",
+          "Käskyjen kyseenalaistaminen moraalisesti"
+        ]
+      },
+      "on_complete": [
+        {
+          "action": "apply_ai_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json -> acts[2].ai_dialogue",
+            "ai_worker_output": "runtime_analysis_result"
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "to": "SCENE_4",
+          "condition": "always",
+          "trigger": "dialogue_end"
+        }
+      ]
+    },
+
+    "SCENE_4": {
+      "type": "scene",
+      "scene_id": "4_samsonov_officersclub",
+      "scene_name": "Upseerikerho - Samsonov",
+      "description": "Pietarin upseerikerho. Samsonov varoittaa Keski-Aasian vaaroista.",
+      "data_source": {
+        "narrative": "viesti5.json -> scenes[3]",
+        "choices": "viesti2.json -> acts[3].linear_choices"
+      },
+      "choices": [
+        {
+          "id": "samsonov_clans",
+          "display_text": "Klaanijohtajien kanssa täytyy neuvotella.",
+          "next": "SCENE_4_POST"
+        },
+        {
+          "id": "samsonov_russia",
+          "display_text": "Venäjän sotilasmahti ratkaisee.",
+          "next": "SCENE_4_POST"
+        },
+        {
+          "id": "samsonov_indep",
+          "display_text": "En luota kumpaankaan.",
+          "next": "SCENE_4_POST"
+        }
+      ],
+      "on_choice": [
+        {
+          "action": "apply_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json",
+            "scene": "4_samsonov_officersclub",
+            "choice_id": "selected_choice_id"
+          }
+        }
+      ]
+    },
+
+    "SCENE_4_POST": {
+      "type": "hub",
+      "description": "Valintakeskus: pelaaja voi halutessaan käydä AI-dialogin Samsonovin kanssa",
+      "ai_dialogue": {
+        "optional": true,
+        "npc_id": "samsonov",
+        "trigger_text": "Kerro lisää paikallisista johtajista.",
+        "skip_text": "Jatka eteenpäin",
+        "ai_state": "SCENE_4_AI_SAMSONOV"
+      },
+      "transitions": [
+        {
+          "to": "SCENE_4_AI_SAMSONOV",
+          "condition": "player_selects_ai_dialogue",
+          "trigger": "player_input"
+        },
+        {
+          "to": "SCENE_5",
+          "condition": "player_skips_dialogue",
+          "trigger": "player_input"
+        }
+      ]
+    },
+
+    "SCENE_4_AI_SAMSONOV": {
+      "type": "ai_dialogue",
+      "npc_id": "samsonov",
+      "npc_name": "Kenraali Aleksandr Samsonov",
+      "dialogue_config": {
+        "npc_profile_source": "viesti4.json -> npcs[2] (samsonov)",
+        "scene_context": "4_samsonov_officersclub",
+        "allowed_topics": [
+          "Uiguurit, kirgiisit, dunganit",
+          "Britannian vaikutuspelko",
+          "Venäjän rajaseutujen heikkous"
+        ],
+        "forbidden_topics": [
+          "Brittimielinen propaganda",
+          "Venäjän sotilaiden kyvykkyyden vähättely"
+        ]
+      },
+      "on_complete": [
+        {
+          "action": "apply_ai_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json -> acts[3].ai_dialogue",
+            "ai_worker_output": "runtime_analysis_result"
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "to": "SCENE_5",
+          "condition": "always",
+          "trigger": "dialogue_end"
+        }
+      ]
+    },
+
+    "SCENE_5": {
+      "type": "scene",
+      "scene_id": "5_personal_crisis",
+      "scene_name": "Mannerheimin henkilökohtainen kriisi",
+      "description": "Yksinäinen hetki. Mannerheim pohtii syitään lähteä.",
+      "data_source": {
+        "narrative": "viesti5.json -> scenes[4]",
+        "choices": "viesti2.json -> acts[4]"
+      },
+      "choices": [
+        {
+          "id": "crisis_duty",
+          "display_text": "Velvollisuus kutsuu.",
+          "next": "SCENE_6"
+        },
+        {
+          "id": "crisis_science",
+          "display_text": "Tämä on tutkimusmatka.",
+          "next": "SCENE_6"
+        },
+        {
+          "id": "crisis_escape",
+          "display_text": "Haluan vain paeta menneisyyteni.",
+          "next": "SCENE_6"
+        }
+      ],
+      "on_choice": [
+        {
+          "action": "apply_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json",
+            "scene": "5_personal_crisis",
+            "choice_id": "selected_choice_id"
+          }
+        }
+      ]
+    },
+
+    "SCENE_6": {
+      "type": "scene",
+      "scene_id": "6_final_briefing_trepov_kf",
+      "scene_name": "Loppubriiffi - Trepov ja K.F.",
+      "description": "Karttahuone. Viimeinen briiffi ennen lähtöä. Ei valintoja - tämä on määräys.",
+      "data_source": {
+        "narrative": "viesti5.json -> scenes[5]",
+        "choices": "viesti2.json -> acts[5]"
+      },
+      "choices": [],
+      "on_enter": [
+        {
+          "action": "apply_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json",
+            "scene": "6_final_briefing_trepov_kf"
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "to": "SCENE_7",
+          "condition": "always",
+          "trigger": "automatic_after_narration"
+        }
+      ]
+    },
+
+    "SCENE_7": {
+      "type": "scene",
+      "scene_id": "7_sokolov_departure",
+      "scene_name": "Lähtö - Sokolov laiturilla",
+      "description": "Juna-asema. Sokolov tarjoutuu mukaan matkalle.",
+      "data_source": {
+        "narrative": "viesti5.json -> scenes[6]",
+        "choices": "viesti2.json -> acts[6].linear_choices"
+      },
+      "choices": [
+        {
+          "id": "sokolov_accept",
+          "display_text": "Tarvitsen sinut.",
+          "next": "SCENE_7_POST"
+        },
+        {
+          "id": "sokolov_reject",
+          "display_text": "Tulen toimeen ilman.",
+          "next": "SCENE_7_POST"
+        },
+        {
+          "id": "sokolov_officer",
+          "display_text": "Tehtäväni vaatii luotettavan kasakan.",
+          "next": "SCENE_7_POST"
+        }
+      ],
+      "on_choice": [
+        {
+          "action": "apply_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json",
+            "scene": "7_sokolov_departure",
+            "choice_id": "selected_choice_id"
+          }
+        }
+      ]
+    },
+
+    "SCENE_7_POST": {
+      "type": "hub",
+      "description": "Valintakeskus: pelaaja voi halutessaan käydä AI-dialogin Sokolovin kanssa",
+      "ai_dialogue": {
+        "optional": true,
+        "npc_id": "sokolov",
+        "trigger_text": "Miksi juuri sinut valittiin mukaan?",
+        "skip_text": "Jatka eteenpäin",
+        "ai_state": "SCENE_7_AI_SOKOLOV"
+      },
+      "transitions": [
+        {
+          "to": "SCENE_7_AI_SOKOLOV",
+          "condition": "player_selects_ai_dialogue",
+          "trigger": "player_input"
+        },
+        {
+          "to": "PROLOGUE_END",
+          "condition": "player_skips_dialogue",
+          "trigger": "player_input"
+        }
+      ]
+    },
+
+    "SCENE_7_AI_SOKOLOV": {
+      "type": "ai_dialogue",
+      "npc_id": "sokolov",
+      "npc_name": "Kasakka Sergei Sokolov",
+      "dialogue_config": {
+        "npc_profile_source": "viesti4.json -> npcs[3] (sokolov)",
+        "scene_context": "7_sokolov_departure",
+        "allowed_topics": [
+          "Sokolovin taustat rajavartiostossa",
+          "Väkivallan todellisuus Turanissa",
+          "Hänen lojaalisuutensa Mannerheimille"
+        ],
+        "forbidden_topics": [
+          "Venäjän komentoketjun arvostelu",
+          "Liiallinen sentimentaalisuus"
+        ]
+      },
+      "on_complete": [
+        {
+          "action": "apply_ai_diplomacy_effects",
+          "params": {
+            "source": "viesti2.json -> acts[6].ai_dialogue",
+            "ai_worker_output": "runtime_analysis_result"
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "to": "PROLOGUE_END",
+          "condition": "always",
+          "trigger": "dialogue_end"
+        }
+      ]
+    },
+
+    "PROLOGUE_END": {
+      "type": "system",
+      "description": "Prologin lopetus - viimeistellään alignment-arvot ja triggeröidään konfliktisäännöt",
+      "on_enter": [
+        {
+          "action": "finalize_prologue_alignment",
+          "params": {
+            "check_conflict_triggers": true,
+            "conflict_rules_source": "viesti2.json -> conflict_triggers"
+          }
+        },
+        {
+          "action": "calculate_final_npc_opinions",
+          "params": {
+            "npcs": ["trepov", "kf", "samsonov", "sokolov"]
+          }
+        },
+        {
+          "action": "set_narrative_flags",
+          "params": {
+            "prologue_complete": true
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "to": "ACT_I_TIE_ETELAAN",
+          "condition": "always",
+          "trigger": "automatic",
+          "transition_scene_source": "viesti5.json -> transition_to_act_1"
+        }
+      ]
+    }
+  },
+
+  "fallback_guarantees": {
+    "description": "Takuut, että pelaaja ei voi jäädä jumiin",
+    "rules": [
+      "Kaikki 'condition: always' -transitionit toteutuvat aina",
+      "AI-dialogit ovat valinnaisia; pelaaja voi skipata ne",
+      "Jos AI Worker epäonnistuu, käytetään neutral-mappingia",
+      "Kaikki POST-hubit tarjoavat 'skip'-vaihtoehdon"
+    ],
+    "recovery_mechanics": {
+      "if_state_stuck": "force_transition_to_next_scene",
+      "if_ai_worker_fails": "apply_neutral_diplomacy_effects",
+      "if_data_missing": "use_fallback_narrative"
+    }
+  }
+}

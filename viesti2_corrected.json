@@ -1,0 +1,699 @@
+{
+  "module": "prologue_diplomacy",
+  "version": "2.0",
+  "description": "Prologin diplomatiavaikutukset: lineaariset valinnat + AI Worker -keskustelut. Sisältää faction reputation -muutokset, NPC opinion -muutokset, flagit ja konfliktisääntötriggerit.",
+  
+  "meta": {
+    "player_traits_note": "INDEPENDENCE ja NEUTRALITY ovat pelaajan persoonallisuusakseleita, eivät fraktioita. Ne vaikuttavat NPC-reaktioihin (ks. viesti4.json alignment_behavior), mutta eivät suoraan faction reputation -järjestelmään.",
+    "factions": ["RUS", "RUS_SCI", "BRIT", "QING", "TIIBET", "TURKESTAN", "CLANS", "ARCH_SCI", "BANDITS", "RELIG_TRACK"],
+    "player_traits": ["INDEPENDENCE", "NEUTRALITY"]
+  },
+
+  "acts": [
+    {
+      "scene": "1_pietarin_talvisumu",
+      "scene_name": "Pietarin talvisumu",
+      "type": "linear_choice",
+      "choices": [
+        {
+          "id": "duty",
+          "text": "Kutsua on toteltava.",
+          "effects": {
+            "factions": {
+              "RUS": 2
+            },
+            "player_traits": {
+              "NEUTRALITY": 1
+            },
+            "npc_opinions": {},
+            "flags": {
+              "mannerheim_motivated_by_duty": true
+            }
+          }
+        },
+        {
+          "id": "restart",
+          "text": "Tämä matka voi olla alkuni uudestaan.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "NEUTRALITY": 2
+            },
+            "npc_opinions": {},
+            "flags": {
+              "mannerheim_seeking_renewal": true
+            }
+          }
+        },
+        {
+          "id": "escape",
+          "text": "Haluan vain pois Pietarista.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "INDEPENDENCE": 2
+            },
+            "npc_opinions": {},
+            "flags": {
+              "mannerheim_escaping_past": true
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "scene": "2_trepov_meeting",
+      "scene_name": "Ensitapaaminen Trepovin kanssa",
+      "type": "hybrid",
+      "linear_choices": [
+        {
+          "id": "trepov_yes",
+          "text": "Olen käytettävissänne.",
+          "effects": {
+            "factions": {
+              "RUS": 4
+            },
+            "player_traits": {},
+            "npc_opinions": {
+              "trepov": 6
+            },
+            "flags": {
+              "trepov_loyal_response": true
+            }
+          }
+        },
+        {
+          "id": "trepov_neutral",
+          "text": "Haluan ymmärtää, mitä todella odotatte.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "NEUTRALITY": 2
+            },
+            "npc_opinions": {},
+            "flags": {
+              "trepov_cautious_response": true
+            }
+          }
+        },
+        {
+          "id": "trepov_resist",
+          "text": "Tehtävä vaikuttaa poliittiselta riskiltä.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "INDEPENDENCE": 3
+            },
+            "npc_opinions": {
+              "trepov": -4
+            },
+            "flags": {
+              "trepov_questioned_mission": true
+            }
+          }
+        }
+      ],
+
+      "ai_dialogue": {
+        "npc_id": "trepov",
+        "trigger_option": "Haluan keskustella tehtävästä tarkemmin.",
+        "available_after_linear_choice": true,
+        "description": "Pelaaja voi käydä vapaan keskustelun Trepovin kanssa testaamaan lojaalisuutta.",
+        
+        "ai_worker_analysis": {
+          "required_output_fields": [
+            "overall_tone",
+            "detected_stance_towards_russia",
+            "detected_stance_towards_morality",
+            "cooperativeness"
+          ],
+          "evaluation_source": "viesti4.json -> trepov.diplomacy_evaluation_rules"
+        },
+
+        "effects_mapping": [
+          {
+            "id": "trepov_ai_loyal",
+            "condition": {
+              "overall_tone": ["loyal", "supportive"],
+              "detected_stance_towards_russia": "positive"
+            },
+            "effects": {
+              "factions": {
+                "RUS": 3
+              },
+              "player_traits": {},
+              "npc_opinions": {
+                "trepov": 5
+              },
+              "flags": {
+                "trepov_ai_impressed": true
+              }
+            }
+          },
+          {
+            "id": "trepov_ai_neutral",
+            "condition": {
+              "overall_tone": ["analytical", "professional"],
+              "detected_stance_towards_russia": "neutral"
+            },
+            "effects": {
+              "factions": {},
+              "player_traits": {
+                "NEUTRALITY": 2
+              },
+              "npc_opinions": {},
+              "flags": {
+                "trepov_ai_neutral_stance": true
+              }
+            }
+          },
+          {
+            "id": "trepov_ai_critical",
+            "condition": {
+              "overall_tone": ["critical", "skeptical"],
+              "detected_stance_towards_russia": "negative"
+            },
+            "effects": {
+              "factions": {
+                "RUS": -2
+              },
+              "player_traits": {
+                "INDEPENDENCE": 2
+              },
+              "npc_opinions": {
+                "trepov": -4
+              },
+              "flags": {
+                "trepov_ai_displeased": true
+              }
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "scene": "3_kf_briefing",
+      "scene_name": "K.F. antaa salaisen tehtävän",
+      "type": "hybrid",
+      "linear_choices": [
+        {
+          "id": "kf_accept",
+          "text": "Hyväksy tehtävä ilman lisäkysymyksiä.",
+          "effects": {
+            "factions": {
+              "RUS": 4
+            },
+            "player_traits": {},
+            "npc_opinions": {
+              "kf": 1
+            },
+            "flags": {
+              "kf_accepted_immediately": true
+            }
+          }
+        },
+        {
+          "id": "kf_clans",
+          "text": "Vaadi autonomiaa joukon valintaan.",
+          "effects": {
+            "factions": {
+              "CLANS": 3
+            },
+            "player_traits": {
+              "INDEPENDENCE": 2
+            },
+            "npc_opinions": {},
+            "flags": {
+              "kf_requested_autonomy": true
+            }
+          }
+        },
+        {
+          "id": "kf_political",
+          "text": "Kyseenalaista poliittinen motiivi.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "INDEPENDENCE": 2
+            },
+            "npc_opinions": {
+              "kf": -2
+            },
+            "flags": {
+              "kf_questioned_politics": true
+            }
+          }
+        }
+      ],
+
+      "ai_dialogue": {
+        "npc_id": "kf",
+        "trigger_option": "Haluan tietää riskit ennen kuin suostun.",
+        "available_after_linear_choice": true,
+        
+        "ai_worker_analysis": {
+          "required_output_fields": [
+            "overall_tone",
+            "analytical_depth",
+            "respect_for_chain_of_command"
+          ],
+          "evaluation_source": "viesti4.json -> kf.diplomacy_evaluation_rules"
+        },
+
+        "effects_mapping": [
+          {
+            "id": "kf_ai_precise",
+            "condition": {
+              "overall_tone": ["precise", "methodical", "military"],
+              "analytical_depth": "high"
+            },
+            "effects": {
+              "factions": {
+                "RUS_SCI": 2
+              },
+              "player_traits": {},
+              "npc_opinions": {
+                "kf": 2
+              },
+              "flags": {
+                "kf_ai_impressed_by_precision": true
+              }
+            }
+          },
+          {
+            "id": "kf_ai_neutral",
+            "condition": {
+              "overall_tone": ["neutral", "factual"]
+            },
+            "effects": {
+              "factions": {},
+              "player_traits": {
+                "NEUTRALITY": 1
+              },
+              "npc_opinions": {},
+              "flags": {
+                "kf_ai_neutral_exchange": true
+              }
+            }
+          },
+          {
+            "id": "kf_ai_resistant",
+            "condition": {
+              "overall_tone": ["doubtful", "resistant"],
+              "respect_for_chain_of_command": "low"
+            },
+            "effects": {
+              "factions": {
+                "RUS": -2
+              },
+              "player_traits": {
+                "INDEPENDENCE": 2
+              },
+              "npc_opinions": {
+                "kf": -3
+              },
+              "flags": {
+                "kf_ai_doubted_mission": true
+              }
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "scene": "4_samsonov_officersclub",
+      "scene_name": "Upseerikerho - Samsonov",
+      "type": "hybrid",
+      "linear_choices": [
+        {
+          "id": "samsonov_clans",
+          "text": "Klaanijohtajien kanssa täytyy neuvotella.",
+          "effects": {
+            "factions": {
+              "TURKESTAN": 3
+            },
+            "player_traits": {},
+            "npc_opinions": {
+              "samsonov": -1
+            },
+            "flags": {
+              "samsonov_clan_sympathetic": true
+            }
+          }
+        },
+        {
+          "id": "samsonov_russia",
+          "text": "Venäjän sotilasmahti ratkaisee.",
+          "effects": {
+            "factions": {
+              "RUS": 3
+            },
+            "player_traits": {},
+            "npc_opinions": {
+              "samsonov": 2
+            },
+            "flags": {
+              "samsonov_military_aligned": true
+            }
+          }
+        },
+        {
+          "id": "samsonov_indep",
+          "text": "En luota kumpaankaan.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "INDEPENDENCE": 3
+            },
+            "npc_opinions": {},
+            "flags": {
+              "samsonov_trust_neither": true
+            }
+          }
+        }
+      ],
+
+      "ai_dialogue": {
+        "npc_id": "samsonov",
+        "trigger_option": "Kerro lisää paikallisista johtajista.",
+        "available_after_linear_choice": true,
+        
+        "ai_worker_analysis": {
+          "required_output_fields": [
+            "overall_tone",
+            "stance_on_clans",
+            "stance_on_british"
+          ],
+          "evaluation_source": "viesti4.json -> samsonov.diplomacy_evaluation_rules"
+        },
+
+        "effects_mapping": [
+          {
+            "id": "samsonov_ai_realistic",
+            "condition": {
+              "overall_tone": ["analytical", "realistic"],
+              "stance_on_clans": "cautious_respect"
+            },
+            "effects": {
+              "factions": {
+                "CLANS": 2
+              },
+              "player_traits": {},
+              "npc_opinions": {},
+              "flags": {
+                "samsonov_ai_realistic_discussion": true
+              }
+            }
+          },
+          {
+            "id": "samsonov_ai_british_sympathetic",
+            "condition": {
+              "stance_on_british": "supportive"
+            },
+            "effects": {
+              "factions": {
+                "BRIT": 3
+              },
+              "player_traits": {},
+              "npc_opinions": {
+                "samsonov": -3
+              },
+              "flags": {
+                "samsonov_ai_british_concern": true
+              }
+            }
+          },
+          {
+            "id": "samsonov_ai_neutral",
+            "condition": {
+              "overall_tone": ["neutral", "cautious"],
+              "stance_on_british": "neutral"
+            },
+            "effects": {
+              "factions": {},
+              "player_traits": {},
+              "npc_opinions": {},
+              "flags": {
+                "samsonov_ai_neutral_stance": true
+              }
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "scene": "5_personal_crisis",
+      "scene_name": "Mannerheimin henkilökohtainen kriisi",
+      "type": "linear_choice",
+      "choices": [
+        {
+          "id": "crisis_duty",
+          "text": "Velvollisuus kutsuu.",
+          "effects": {
+            "factions": {
+              "RUS": 2
+            },
+            "player_traits": {},
+            "npc_opinions": {},
+            "flags": {
+              "crisis_chose_duty": true
+            }
+          }
+        },
+        {
+          "id": "crisis_science",
+          "text": "Tämä on tutkimusmatka.",
+          "effects": {
+            "factions": {
+              "ARCH_SCI": 2
+            },
+            "player_traits": {
+              "NEUTRALITY": 1
+            },
+            "npc_opinions": {},
+            "flags": {
+              "crisis_chose_science": true
+            }
+          }
+        },
+        {
+          "id": "crisis_escape",
+          "text": "Haluan vain paeta menneisyyteni.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "INDEPENDENCE": 3
+            },
+            "npc_opinions": {},
+            "flags": {
+              "crisis_chose_escape": true
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "scene": "6_final_briefing_trepov_kf",
+      "scene_name": "Loppubriiffi - Trepov ja K.F.",
+      "type": "narrative_only",
+      "description": "Karttahuoneessa Trepov ja K.F. antavat viimeisen briefin. Ei pelaajan valintoja - tämä on teon julistus.",
+      "choices": [],
+      "on_complete": {
+        "effects": {
+          "factions": {},
+          "player_traits": {},
+          "npc_opinions": {},
+          "flags": {
+            "final_briefing_complete": true,
+            "mission_officially_started": true
+          }
+        }
+      }
+    },
+
+    {
+      "scene": "7_sokolov_departure",
+      "scene_name": "Lähtö - Sokolov laiturilla",
+      "type": "hybrid",
+      "linear_choices": [
+        {
+          "id": "sokolov_accept",
+          "text": "Tarvitsen sinut.",
+          "effects": {
+            "factions": {
+              "CLANS": 3
+            },
+            "player_traits": {},
+            "npc_opinions": {
+              "sokolov": 3
+            },
+            "flags": {
+              "sokolov_recruited": true
+            }
+          }
+        },
+        {
+          "id": "sokolov_reject",
+          "text": "Tulen toimeen ilman.",
+          "effects": {
+            "factions": {},
+            "player_traits": {
+              "INDEPENDENCE": 3
+            },
+            "npc_opinions": {
+              "sokolov": -2
+            },
+            "flags": {
+              "sokolov_rejected": true
+            }
+          }
+        },
+        {
+          "id": "sokolov_officer",
+          "text": "Tehtäväni vaatii luotettavan kasakan.",
+          "effects": {
+            "factions": {
+              "RUS": 2
+            },
+            "player_traits": {},
+            "npc_opinions": {
+              "sokolov": 2
+            },
+            "flags": {
+              "sokolov_recruited_officially": true
+            }
+          }
+        }
+      ],
+
+      "ai_dialogue": {
+        "npc_id": "sokolov",
+        "trigger_option": "Miksi juuri sinut valittiin mukaan?",
+        "available_after_linear_choice": true,
+        
+        "ai_worker_analysis": {
+          "required_output_fields": [
+            "overall_tone",
+            "respect_for_sokolov",
+            "pragmatism_level"
+          ],
+          "evaluation_source": "viesti4.json -> sokolov.diplomacy_evaluation_rules"
+        },
+
+        "effects_mapping": [
+          {
+            "id": "sokolov_ai_respectful",
+            "condition": {
+              "overall_tone": ["respectful"],
+              "respect_for_sokolov": "high"
+            },
+            "effects": {
+              "factions": {},
+              "player_traits": {},
+              "npc_opinions": {
+                "sokolov": 4
+              },
+              "flags": {
+                "sokolov_ai_bonded": true
+              }
+            }
+          },
+          {
+            "id": "sokolov_ai_dismissive",
+            "condition": {
+              "overall_tone": ["dismissive", "arrogant"],
+              "respect_for_sokolov": "low"
+            },
+            "effects": {
+              "factions": {},
+              "player_traits": {},
+              "npc_opinions": {
+                "sokolov": -5
+              },
+              "flags": {
+                "sokolov_ai_insulted": true
+              }
+            }
+          },
+          {
+            "id": "sokolov_ai_pragmatic",
+            "condition": {
+              "overall_tone": ["practical", "strategic"],
+              "pragmatism_level": "high"
+            },
+            "effects": {
+              "factions": {
+                "CLANS": 1
+              },
+              "player_traits": {},
+              "npc_opinions": {},
+              "flags": {
+                "sokolov_ai_pragmatic_discussion": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+
+  "conflict_triggers": {
+    "description": "Konfliktisäännöt, jotka triggeröityvät prologin aikana tai lopussa, kun tietyt faction-arvot ylittyvät.",
+    "rules": [
+      {
+        "id": "high_brit_tension",
+        "trigger_condition": {
+          "BRIT": { "min": 20 }
+        },
+        "effects": {
+          "factions": {
+            "RUS": -5
+          },
+          "narrative_flag": "early_british_alignment_noticed"
+        },
+        "description": "Jos pelaaja on jo prologissa vahvasti brittimielinen, venäläiset huomaavat tämän."
+      },
+      {
+        "id": "extreme_independence",
+        "trigger_condition": {
+          "player_traits": {
+            "INDEPENDENCE": { "min": 10 }
+          }
+        },
+        "effects": {
+          "narrative_flag": "mannerheim_seen_as_maverick"
+        },
+        "description": "Jos pelaaja on kerännyt paljon itsenäisyyttä, NPC:t huomaavat tämän tulevissa kohtaamisissa."
+      },
+      {
+        "id": "high_turkestan_low_rus",
+        "trigger_condition": {
+          "TURKESTAN": { "min": 6 },
+          "RUS": { "max": 5 }
+        },
+        "effects": {
+          "narrative_flag": "clan_sympathizer_reputation"
+        },
+        "description": "Klaanimyötäisyys ja alhainen venäläislojaalisuus luovat maineen."
+      }
+    ]
+  },
+
+  "fallback_guarantees": {
+    "never_block_main_story": true,
+    "always_available_paths": ["enbom", "sokolov", "krotkov", "taixu"],
+    "opinion_recovery_mechanics": {
+      "per_act_recovery": 5,
+      "gift_recovery": 10,
+      "heroic_deed_recovery": 15
+    },
+    "soft_lock_threshold": -40,
+    "hard_lock_threshold": -80,
+    "note": "Vaikka NPC opinion laskee alle -80, pelaaja voi aina käyttää vaihtoehtoisia NPC:itä tai korjata suhdetta lahjoilla/teoilla."
+  }
+}

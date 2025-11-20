@@ -1,0 +1,472 @@
+{
+  "version": "1.0",
+  "system_name": "SilkRoad_Diplomacy_Core",
+  "description": "Diplomatiamekaniikan ydinmalli Mannerheim Aasian-matka -peliin. Tämä tiedosto kuvaa abstraktit säännöt, ei varsinaista pelimoottorikoodia.",
+  "value_ranges": {
+    "faction_reputation": {
+      "min": -100,
+      "max": 100,
+      "default": 0,
+      "description": "Fraktiomittari kuvaa pelaajan mainetta eri ryhmien silmissä."
+    },
+    "npc_opinion": {
+      "min": -100,
+      "max": 100,
+      "default": 0,
+      "description": "NPC-kohtainen mielipidearvo pelaajasta. Johdetaan fraktioista + NPC:n omista painotuksista."
+    }
+  },
+
+  "factions": {
+    "RUS": {
+      "name": "Venäjän valtio / armeija",
+      "description": "Keisarillinen Venäjä kokonaisuutena: esikunta, poliittinen johto, sotilasjohto.",
+      "default_reputation": 0
+    },
+    "RUS_SCI": {
+      "name": "Venäläiset tutkijat ja konsulit",
+      "description": "Kolokolov, Krotkov, Kozlov ja vastaavat tiede- ja diplomaattilinjat.",
+      "default_reputation": 0
+    },
+    "BRIT": {
+      "name": "Brittiläiset diplomaatit ja retkikunnat",
+      "description": "Macartneyt, Stein ja heidän tukiverkostonsa.",
+      "default_reputation": 0
+    },
+    "QING": {
+      "name": "Qing-hovi ja keskushallinto",
+      "description": "Zaifeng, Yuan Shikai, Zhang Zhidong, Li Wen, Song Yun, Zhao Rong yms.",
+      "default_reputation": 0
+    },
+    "TIIBET": {
+      "name": "Tiibetin johto ja luostarit",
+      "description": "Dalai-lama, Punaviitta-Lama, tiibetin luostarit.",
+      "default_reputation": 0
+    },
+    "MUSLIM": {
+      "name": "Paikalliset muslimijohdot",
+      "description": "Kurmanjan Datka, Subhi Effendi, Tursun Beg ja heihin kytkeytyvät yhteisöt.",
+      "default_reputation": 0
+    },
+    "CLANS": {
+      "name": "Heimot, kasakat ja paikalliset klaanit",
+      "description": "Kasakka Sokolov, vuoristolaisheimot, osa rosvoryhmistä.",
+      "default_reputation": 0
+    },
+    "ARCH_SCI": {
+      "name": "Kansainväliset arkeologit ja tutkijat",
+      "description": "Stein, Pelliot, Le Coq, Ōtani, Enbom, Krotkov, Kolokolov, Kozlov.",
+      "default_reputation": 0
+    },
+    "BANDITS": {
+      "name": "Rosvot ja rikolliset",
+      "description": "Harmaa Susi ja muut rikollisverkostot.",
+      "default_reputation": 0
+    },
+    "RELIG_TRACK": {
+      "name": "Hengellisen kunnioituksen mittari",
+      "description": "Abstrakti mittari, joka kuvaa pelaajan uskonnollista/hengellistä kunnioitusta (buddhalaiset, luostarit, rituaalit).",
+      "default_reputation": 0
+    }
+  },
+
+  "relation_codes": {
+    "SELF": {
+      "label": "Self",
+      "description": "Sama hahmo; ei käytetä pelimekaniikan päätöksissä."
+    },
+    "NONE": {
+      "label": "Ei merkittävää suhdetta",
+      "description": "Ei suoraa vaikutusta tai määriteltyä historiallista suhdetta."
+    },
+    "ALLY": {
+      "label": "Liittolainen",
+      "description": "Vahvasti myönteinen suhde.",
+      "suggested_numerical_effect": {
+        "npc_opinion_bonus": 30
+      }
+    },
+    "INFO": {
+      "label": "Tiedonvaihto",
+      "description": "Perustuu informaation, ei tunnesiteen vaihtoon.",
+      "suggested_numerical_effect": {
+        "npc_opinion_bonus": 10
+      }
+    },
+    "POL": {
+      "label": "Poliittinen suhde",
+      "description": "Liittyy valtapolitiikkaan, hallintoon, diplomatiaan.",
+      "suggested_numerical_effect": {
+        "npc_opinion_bonus": 5
+      }
+    },
+    "RIVAL": {
+      "label": "Kilpailija",
+      "description": "Tieteellinen, sotilaallinen tai diplomaattinen kilpailu.",
+      "suggested_numerical_effect": {
+        "npc_opinion_penalty": -15
+      }
+    },
+    "OPP": {
+      "label": "Vastustaja",
+      "description": "Avoin tai piilevä vihamielisyys.",
+      "suggested_numerical_effect": {
+        "npc_opinion_penalty": -30
+      }
+    },
+    "RELIG": {
+      "label": "Hengellinen yhteys",
+      "description": "Uskonnollinen tai hengellinen sidos.",
+      "suggested_numerical_effect": {
+        "npc_opinion_bonus": 15
+      }
+    },
+    "RESPECT": {
+      "label": "Kunnioitus",
+      "description": "Mutual respect ilman selkeää liittolaisuutta.",
+      "suggested_numerical_effect": {
+        "npc_opinion_bonus": 10
+      }
+    },
+    "DEBATE": {
+      "label": "Aatteellinen debatti",
+      "description": "Ideologinen tai teologinen väittelysuhde.",
+      "suggested_numerical_effect": {
+        "npc_opinion_var": "voi liukua positiiviseen tai negatiiviseen pelaajan valintojen mukaan"
+      }
+    }
+  },
+
+  "relationship_tiers": [
+    {
+      "id": "HOSTILE",
+      "label": "Vihamielinen",
+      "min_opinion": -100,
+      "max_opinion": -50,
+      "gameplay_effects": [
+        "NPC voi kieltäytyä auttamasta.",
+        "Suurentunut todennäköisyys sabotaasiin, hyökkäyksiin tai ansaan.",
+        "Diplomatiaoptioita vähemmän, uhkailu korostuu."
+      ]
+    },
+    {
+      "id": "COLD",
+      "label": "Kylmä",
+      "min_opinion": -49,
+      "max_opinion": -10,
+      "gameplay_effects": [
+        "NPC tarjoaa vain minimitason palvelut (jos pakko).",
+        "Korkeammat hinnat, vähemmän tietoa.",
+        "Kasvanut epäluulo: valheet paljastuvat helpommin."
+      ]
+    },
+    {
+      "id": "NEUTRAL",
+      "label": "Neutraali",
+      "min_opinion": -9,
+      "max_opinion": 9,
+      "gameplay_effects": [
+        "Peruspalvelut saatavilla.",
+        "Diplomatia- ja kauppavaihtoehdot rajallisia.",
+        "NPC seuraa tilannetta mutta ei sitoudu."
+      ]
+    },
+    {
+      "id": "FRIENDLY",
+      "label": "Ystävällinen",
+      "min_opinion": 10,
+      "max_opinion": 49,
+      "gameplay_effects": [
+        "NPC antaa alennuksia, lisätietoa ja pieniä sivutehtäviä.",
+        "Uusia dialogivaihtoehtoja: henkilökohtaiset luottamukselliset paljastukset.",
+        "Suurempi halukkuus riskeerata puolestasi."
+      ]
+    },
+    {
+      "id": "ALLY_TIER",
+      "label": "Liittolainen",
+      "min_opinion": 50,
+      "max_opinion": 100,
+      "gameplay_effects": [
+        "NPC avaa pääquest-linjoja ja salaisia reittejä.",
+        "NPC voi tukea sinua konflikteissa muiden fraktioiden kanssa.",
+        "Korkea todennäköisyys, että NPC puolustaa sinua poissaollessasikin."
+      ]
+    }
+  ],
+
+  "npc_opinion_model": {
+    "description": "NPC:n mielipide pelaajasta lasketaan fraktio-maineen ja NPC-kohtaisten painotusten yhdistelmänä.",
+    "base_formula": "opinion[NPC] = base_opinion[NPC] + sum_over_factions(weight[NPC][faction] * reputation[faction]) + situational_modifiers",
+    "base_opinion_default": 0,
+    "default_weights": {
+      "RUS": 0.0,
+      "RUS_SCI": 0.0,
+      "BRIT": 0.0,
+      "QING": 0.0,
+      "TIIBET": 0.0,
+      "MUSLIM": 0.0,
+      "CLANS": 0.0,
+      "ARCH_SCI": 0.0,
+      "BANDITS": 0.0,
+      "RELIG_TRACK": 0.0
+    },
+    "tier_clamping": {
+      "apply_after_each_update": true,
+      "description": "Jos laskettu arvo menee yli min/max, se rajataan -100…100 välille."
+    },
+    "examples": [
+      {
+        "npc_id": "macartney",
+        "example_formula": "opinion[Macartney] = 10 + 0.6*BRIT + 0.2*ARCH_SCI",
+        "notes": "Herkkä britti- ja arkeologimaineelle; hieman myönteinen oletuksena."
+      },
+      {
+        "npc_id": "kolokolov",
+        "example_formula": "opinion[Kolokolov] = 20 + 0.5*RUS + 0.4*RUS_SCI",
+        "notes": "Painottaa vahvasti Venäjän ja venäläisen tiedeyhteisön mainetta."
+      },
+      {
+        "npc_id": "dalai_lama",
+        "example_formula": "opinion[Dalai_lama] = 10 + 0.6*TIIBET + 0.2*RELIG_TRACK - 0.3*QING",
+        "notes": "Herkkä Tiibetin edun ja hengellisen kunnioituksen vaihteluille, negatiivinen suhde Qing-mainetta kohtaan."
+      }
+    ]
+  },
+
+  "action_effect_format": {
+    "description": "Jokainen valinta/questi ilmaistaan efektiblokkina, joka päivittää fraktioita ja NPC-opinioneja.",
+    "schema": {
+      "id": "string (uniikki tapahtumatunniste)",
+      "label": "lyhyt ihmislukijalle suunnattu kuvaus",
+      "tags": [
+        "lista merkkijonoja, esim. ['dialog', 'quest', 'battle', 'religious']"
+      ],
+      "effects": {
+        "factions": {
+          "FACTION_ID": "signed integer (-100…100), muutoksen suuruus",
+          "example": "ARCH_SCI: 10"
+        },
+        "npcs": {
+          "NPC_ID": "signed integer (-100…100), suora muutos NPC:n mielipiteeseen",
+          "example": "Punaviitta_Lama: -20"
+        },
+        "flags": {
+          "optional": "objekti, johon voi tallettaa boolean- tai enum-tiloja (esim. 'exposed_stein_to_qing': true)"
+        }
+      }
+    },
+    "example_event_help_stein_smuggle": {
+      "id": "stein_smuggle_help",
+      "label": "Autat Aurel Steinia viemään käsikirjoituksia luostarista salaa",
+      "tags": [
+        "quest",
+        "arkeologia",
+        "luostari",
+        "morality"
+      ],
+      "effects": {
+        "factions": {
+          "ARCH_SCI": 10,
+          "BRIT": 5,
+          "QING": -10,
+          "TIIBET": -10,
+          "RELIG_TRACK": -5
+        },
+        "npcs": {
+          "stein": 25,
+          "punaviitta_lama": -20,
+          "dalai_lama": -10
+        },
+        "flags": {
+          "stein_helped_smuggle": true
+        }
+      }
+    },
+    "example_event_expose_stein_to_qing": {
+      "id": "stein_exposed_to_qing",
+      "label": "Ilmiannat Steinin toiminnan Qing-viranomaisille",
+      "tags": [
+        "quest",
+        "betrayal",
+        "politics"
+      ],
+      "effects": {
+        "factions": {
+          "QING": 15,
+          "BRIT": -10,
+          "ARCH_SCI": -10
+        },
+        "npcs": {
+          "stein": -40,
+          "song_yun": 10,
+          "li_wen": 5
+        },
+        "flags": {
+          "stein_under_suspicion": true
+        }
+      }
+    }
+  },
+
+  "conflict_rules": [
+    {
+      "id": "high_brit_low_rus_qing",
+      "condition": {
+        "BRIT_at_least": 40
+      },
+      "effects": {
+        "RUS_modifier": -10,
+        "QING_modifier": -10
+      },
+      "description": "Jos pelaaja profiloituu hyvin vahvasti brittien liittolaiseksi, Venäjän ja Qingin maine laskee."
+    },
+    {
+      "id": "high_tibet_low_qing",
+      "condition": {
+        "TIIBET_at_least": 40
+      },
+      "effects": {
+        "QING_modifier": -15
+      },
+      "description": "Tiibetin kova tukeminen heikentää pelaajan mainetta Qing-hovissa."
+    },
+    {
+      "id": "high_muslim_and_high_qing_tension",
+      "condition": {
+        "MUSLIM_at_least": 40,
+        "QING_at_least": 40
+      },
+      "effects": {
+        "trigger_event": "choose_side_muslim_qing"
+      },
+      "description": "Jos pelaaja on yhtä aikaa suosiossa sekä muslimiyhteisöissä että Qing-hallinnossa, syntyy pakko valita puoli."
+    },
+    {
+      "id": "high_arch_sci_low_tibet",
+      "condition": {
+        "ARCH_SCI_at_least": 40,
+        "TIIBET_at_most": -10
+      },
+      "effects": {
+        "lock_content": [
+          "dalai_lama_main_story_branch",
+          "punaviitta_lama_secret_route"
+        ]
+      },
+      "description": "Liian aggressiivinen arkeologinen maine ja tiibetiläisten vähättely sulkevat osan luostari- ja Dalai-lama -sisällöstä."
+    }
+  ],
+
+  "npc_preferences": {
+    "macartney": {
+      "alignments": {
+        "BRIT": 0.6,
+        "ARCH_SCI": 0.2
+      },
+      "likes": [
+        "tasapainottava_diplomatia",
+        "tiedonvaihto_venajasta_ja_kiinasta"
+      ],
+      "dislikes": [
+        "liian_selkea_venaja_mielisyys",
+        "valhe_raporteissa"
+      ],
+      "unlock_conditions": [
+        {
+          "condition": "BRIT_reputation_at_least_30",
+          "effect": "unlock_british_secret_reports"
+        }
+      ]
+    },
+    "kolokolov": {
+      "alignments": {
+        "RUS": 0.5,
+        "RUS_SCI": 0.4
+      },
+      "likes": [
+        "tiedon_raportointi_pietariin",
+        "kulttuuriloytojen_toimittaminen_venalaisille"
+      ],
+      "dislikes": [
+        "datan_myynti_briteille_tai_japanilaisille"
+      ],
+      "unlock_conditions": [
+        {
+          "condition": "RUS_SCI_reputation_at_least_30",
+          "effect": "unlock_song_yun_diplomatic_line"
+        }
+      ]
+    },
+    "dalai_lama": {
+      "alignments": {
+        "TIIBET": 0.6,
+        "RELIG_TRACK": 0.2,
+        "QING": -0.3
+      },
+      "likes": [
+        "rehellinen_keskustelu_tiibetin_tilanteesta",
+        "hengellinen_kunnioitus"
+      ],
+      "dislikes": [
+        "tiibetin_tiedon_ilmianto_qingille",
+        "pyhien_paikkojen_ryosto"
+      ],
+      "unlock_conditions": [
+        {
+          "condition": "TIIBET_reputation_at_least_40",
+          "effect": "unlock_dalai_lama_core_story"
+        }
+      ]
+    },
+    "kurmanjan_datka": {
+      "alignments": {
+        "MUSLIM": 0.4,
+        "CLANS": 0.4
+      },
+      "likes": [
+        "rehellinen_sopiminen",
+        "heimorajojen_kunnioitus"
+      ],
+      "dislikes": [
+        "oman_vaen_uhraaminen_suurvaltojen_pelissa"
+      ],
+      "unlock_conditions": [
+        {
+          "condition": "CLANS_reputation_at_least_30",
+          "effect": "unlock_safe_south_route"
+        }
+      ]
+    },
+    "harmaa_susi": {
+      "alignments": {
+        "BANDITS": 0.7,
+        "CLANS": 0.2
+      },
+      "likes": [
+        "lunnaiden_maksaminen_ajallaan",
+        "pelon_maineen_salliminen"
+      ],
+      "dislikes": [
+        "petos",
+        "yhteistyo_viranomaisten_kanssa_hanta_vastaan"
+      ],
+      "unlock_conditions": [
+        {
+          "condition": "BANDITS_reputation_at_least_20",
+          "effect": "unlock_safe_bandit_routes"
+        }
+      ]
+    }
+  },
+
+  "implementation_notes": [
+    "Pelin käynnistyessä alustetaan kaikki faction_reputation[FACTION] = default_reputation.",
+    "NPC-opinioni lasketaan aina, kun reput tai NPC-kohtaiset modifikaatiot muuttuvat.",
+    "Jokaisella dialogivalinnalla ja questin päätöksellä tulisi olla vähintään pieni vaikutus johonkin fraktioon ja usein myös yhteen NPC:hen.",
+    "Suhdetasojen (relationship_tiers) perusteella peli valitsee, mitkä dialogi- ja quest-vaihtoehdot aktivoidaan.",
+    "conflict_rules-apu logiikkaa voidaan ajaa jokaisen isomman reputapahtuman jälkeen (esim. questin valmistuttua).",
+    "npc_preferences-objektia voi käyttää ohjaamaan automaattisesti, miten eri fraktioreput muuntuvat NPC_opinion-pisteiksi.",
+    "relation_codes voidaan tarvittaessa mapata numeeriseen 'edge_weight'-arvoon, jos halutaan simuloida myös NPC↔NPC -verkoston dynamiikkaa."
+  ]
+}

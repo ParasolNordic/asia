@@ -1,0 +1,179 @@
+{
+  "module": "prologue_scenes",
+  "version": "2.0",
+  "description": "Prologin HTML-lavasteet ja visuaalinen sisältö. Scene ID:t yhtenäistetty muiden moduulien kanssa.",
+  
+  "image_logic": {
+    "rule": "If image file does not exist in /root then show text placeholder.",
+    "placeholder_format": "Missing image: {filename}",
+    "image_path_prefix": "/assets/images/prologue/"
+  },
+
+  "scenes": [
+    {
+      "scene_id": "1_pietarin_talvisumu",
+      "name": "Pietarin talvisumu",
+      "image": "prologi1.jpg",
+      "html": "<div class='scene prologue-scene' id='scene_1_pietarin_talvisumu'>\n  <h1>Pietari, talvi 1906</h1>\n  <p>Lumisumu leijuu Nevajoen yllä. Raitiovaunut kolisevat ja sotilaat välttelevät toistensa katseita.</p>\n  <p>Lehtipoika huutaa: <em>\"Mukdenin tappio — keisarikunta horjuu!\"</em></p>\n  <p>Mannerheim pysähtyy sillalle. On kylmä, ja kaupunki tuntuu raskaalta kuin ennen myrskyä.</p>\n</div>",
+      "ambient": {
+        "weather": "snow_fog",
+        "temperature": "freezing",
+        "sound": ["distant_tram", "river_ice_cracking", "wind_howling"],
+        "mood": "melancholy, tense, anticipatory"
+      },
+      "color_palette": {
+        "primary": "#c5d5e0",
+        "secondary": "#8b9da9",
+        "accent": "#3d4f5c"
+      }
+    },
+
+    {
+      "scene_id": "2_trepov_meeting",
+      "name": "Trepovin tapaaminen",
+      "image": "prologi2.jpg",
+      "html": "<div class='scene prologue-scene' id='scene_2_trepov_meeting'>\n  <h1>Sisäministeriön rakennus</h1>\n  <p>Vihreät samettipaneloinnit ja raskaat ovet sulkeutuvat takanasi. Trepov seisoo ikkunan ääressä, kädet selän takana.</p>\n  <p>Ilmassa leijuu tupakkaa ja vallan tuntu on lähes fyysinen.</p>\n  <p class='npc-intro'>Dmitri Trepov, sisäministeriön virkamies, kääntyy hitaasti. Hänen katseensa on kylmä ja arvioiva.</p>\n</div>",
+      "ambient": {
+        "lighting": "dim, dark_green_tint",
+        "sound": ["muffled_steps", "pen_scratching", "distant_clock"],
+        "mood": "authoritarian, intimidating, oppressive"
+      },
+      "color_palette": {
+        "primary": "#2d4a35",
+        "secondary": "#1a2e20",
+        "accent": "#8b7355"
+      }
+    },
+
+    {
+      "scene_id": "3_kf_briefing",
+      "name": "K.F.:n salainen briiffi",
+      "image": "prologi3.jpg",
+      "html": "<div class='scene prologue-scene' id='scene_3_kf_briefing'>\n  <h1>Yleisesikunnan karttahuone</h1>\n  <p>Pöydillä on karttoja, mittalaitteita ja salaisia raportteja. K.F. ei nosta katsettaan ennen kuin seisot aivan edessä.</p>\n  <p>Huoneessa on kellertävä valo ja sotilaallinen täsmällisyys.</p>\n  <p class='npc-intro'>Everstiluutnantti K.F., esikuntaupseeri, osoittaa karttaa kylmästi ja metodisesti.</p>\n</div>",
+      "ambient": {
+        "lighting": "warm_lamp_glow, focused",
+        "sound": ["paper_rustle", "clock_tick", "pen_on_map"],
+        "mood": "formal, analytical, clinical"
+      },
+      "color_palette": {
+        "primary": "#d4b896",
+        "secondary": "#8b7355",
+        "accent": "#4a3728"
+      }
+    },
+
+    {
+      "scene_id": "4_samsonov_officersclub",
+      "name": "Upseerikerho — Samsonov",
+      "image": "prologi4.jpg",
+      "html": "<div class='scene prologue-scene' id='scene_4_samsonov_officersclub'>\n  <h1>Pietarin upseerikerho</h1>\n  <p>Savukkeenkatku, tumma puu ja vanhat rintamakuvat täyttävät huoneen. Samsonov juo teetä ja näyttää väsyneeltä mutta valppaana.</p>\n  <p>Ilmassa on sodan jälkimaun katkeruus.</p>\n  <p class='npc-intro'>Kenraali Aleksandr Samsonov, rajavyöhykkeen veteraani, tarjoaa istuimen mutta ei hymyile.</p>\n</div>",
+      "ambient": {
+        "lighting": "golden_lamp, shadowy_corners",
+        "sound": ["glasses_clink", "low_murmur", "distant_laughter"],
+        "mood": "military, anxious, wary"
+      },
+      "color_palette": {
+        "primary": "#8b6f47",
+        "secondary": "#5c4a33",
+        "accent": "#d4af37"
+      }
+    },
+
+    {
+      "scene_id": "5_personal_crisis",
+      "name": "Mannerheimin henkilökohtainen kriisi",
+      "image": "prologi5.jpg",
+      "html": "<div class='scene prologue-scene' id='scene_5_personal_crisis'>\n  <h1>Mannerheimin asunto</h1>\n  <p>Hiljainen huone, jossa vain hehkuvan uunin punainen valo liikkuu seinillä. Palvelija pakkaa laukkuja. Pöydällä on Anastasian jättämiä papereita.</p>\n  <p>Mannerheim seisoo hetken liikkumatta. Menneisyys tuntuu painavan.</p>\n  <p class='internal-monologue'><em>\"Pietari ei kaipaa minua. Anastasia ei kaipaa minua. Mutta ehkä tämä matka kaipaa minua.\"</em></p>\n</div>",
+      "ambient": {
+        "lighting": "firelight, warm_shadows",
+        "sound": ["soft_embers", "quiet_room", "distant_snow_wind"],
+        "mood": "introspective, solemn, melancholic"
+      },
+      "color_palette": {
+        "primary": "#8b3a3a",
+        "secondary": "#5c2626",
+        "accent": "#d4a76a"
+      }
+    },
+
+    {
+      "scene_id": "6_final_briefing_trepov_kf",
+      "name": "Loppubriiffi — Trepov + K.F.",
+      "image": "prologi6.jpg",
+      "html": "<div class='scene prologue-scene' id='scene_6_final_briefing'>\n  <h1>Sotilaskarttahuone</h1>\n  <p>Kiinan kartta on levitetty pöydälle. Punaisia reittiviivoja, merkintöjä rajalinnakkeista ja raporteista.</p>\n  <p>Trepov ja K.F. odottavat. Tämä ei ole keskustelu — tämä on määräys.</p>\n  <p class='narrative'><strong>Trepov:</strong> \"Kiinan lohikäärme nukkuu. Jos se herää, maailma muuttuu.\"</p>\n  <p class='narrative'><strong>K.F.:</strong> \"Te esitätte raporttinne keisarille itselleen, jos elätte siihen asti.\"</p>\n</div>",
+      "ambient": {
+        "lighting": "cold_desaturated, harsh",
+        "sound": ["map_rustle", "tense_silence"],
+        "mood": "tense, strategic, ominous"
+      },
+      "color_palette": {
+        "primary": "#6b7c8c",
+        "secondary": "#4a5a6a",
+        "accent": "#a8554e"
+      }
+    },
+
+    {
+      "scene_id": "7_sokolov_departure",
+      "name": "Lähtö — Sokolov laiturilla",
+      "image": "prologi7.jpg",
+      "html": "<div class='scene prologue-scene' id='scene_7_sokolov_departure'>\n  <h1>Moskovan juna-aseman laiturit</h1>\n  <p>Höyry peittää näkyvyyttä. Sokolov seisoo rivissä kasakkajoukkojen kanssa, turkisviitta harteillaan. Juna puhkuu lähtövalmiina.</p>\n  <p>Kaukana kuuluu metallin kolinaa ja hevosten hirnuntaa.</p>\n  <p class='npc-intro'>Kasakka Sergei Sokolov astuu esiin, tervehtiä ja tarjoutuu suojelijaksi matkalle.</p>\n  <p class='narrative-end'><em>Juna nytkähtää liikkeelle. Pietari jää taakse. Edessä odottaa tuntematon.</em></p>\n</div>",
+      "ambient": {
+        "weather": "cold_steam, early_morning_fog",
+        "sound": ["train_engine", "horse_sounds", "distant_shouts", "steam_hiss"],
+        "mood": "anticipatory, courageous, journey_beginning"
+      },
+      "color_palette": {
+        "primary": "#b0c4d4",
+        "secondary": "#7a8e9e",
+        "accent": "#4a3a2a"
+      }
+    }
+  ],
+
+  "css_suggestions": {
+    "scene_container": {
+      "max-width": "800px",
+      "margin": "0 auto",
+      "padding": "2rem",
+      "font-family": "'Crimson Text', Georgia, serif",
+      "line-height": "1.8"
+    },
+    "scene_title": {
+      "font-size": "2.5rem",
+      "font-weight": "600",
+      "margin-bottom": "1.5rem",
+      "color": "var(--primary-color)"
+    },
+    "npc_intro": {
+      "font-style": "italic",
+      "color": "#555",
+      "border-left": "3px solid var(--accent-color)",
+      "padding-left": "1rem",
+      "margin": "1rem 0"
+    },
+    "internal_monologue": {
+      "font-style": "italic",
+      "color": "#666",
+      "background": "rgba(0,0,0,0.02)",
+      "padding": "1rem",
+      "border-radius": "4px"
+    },
+    "narrative": {
+      "margin": "1rem 0",
+      "color": "#333"
+    },
+    "narrative_end": {
+      "text-align": "center",
+      "font-style": "italic",
+      "margin-top": "2rem",
+      "color": "#777"
+    }
+  },
+
+  "transition_to_act_1": {
+    "scene_id": "prologue_end_transition",
+    "html": "<div class='transition-scene'>\n  <h1>ENSIMMÄINEN NÄYTTÄMÖ</h1>\n  <h2>Tie etelään</h2>\n  <p class='transition-text'>Juna ryskyttää kohti etelää. Mannerheim katsoo ikkunasta liikkuvaa maisemaa. Edessä odottavat Venäjän rajaseudut, Keski-Aasian autiomaat ja Kiinan mysteerit.</p>\n  <p class='transition-text'>Hänen mukanaan kulkee tehtävä, jonka paino kasvaa jokaisella kilometrillä.</p>\n</div>",
+    "next_module": "ACT_I_TIE_ETELAAN"
+  }
+}

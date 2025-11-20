@@ -1,0 +1,218 @@
+[
+  {
+    "Nimi": "Dmitri Trepov",
+    "Kasikirjoituksen_vaihe": "Prologi – Pietari",
+    "Tausta": "Venäjän sisäministeriön ja turvallisuuskoneiston korkea-arvoinen virkamies, vaikutusvaltainen 1900-luvun alun poliittisissa piireissä.",
+    "Motivaatiot": "Vahvistaa Venäjän asemaa Aasiassa; varmistaa Mannerheimin lojaalisuuden; kasvattaa omaa poliittista valtaansa.",
+    "Puhetapa": "Arrogantti, käskyttävä ja suora; ei hukkaa aikaa muodollisuuksiin.",
+    "Rooli": "Antaa poliittisen kehyksen Mannerheimin tehtävälle; painostaa aggressiiviseen tiedusteluun; voi muuttaa tehtävän ehtoja kesken matkan."
+  },
+  {
+    "Nimi": "Everstiluutnantti \"K.F.\"",
+    "Kasikirjoituksen_vaihe": "Prologi – Pietari",
+    "Tausta": "Koostehahmo Venäjän keisarillisen esikunnan tiedustelupäälliköistä; toimii Mannerheimin välittömänä esimiehenä.",
+    "Motivaatiot": "Suorittaa keisarin tahtoa; kerätä mahdollisimman tarkkaa sotilas- ja poliittista tietoa Kiinasta; arvioida Mannerheimin luotettavuutta.",
+    "Puhetapa": "Muodollinen, virallinen, sotilasmainen; käyttää esikuntasanastoa ja välttelee tunneilmaisua.",
+    "Rooli": "Antaa salaisen tehtävän ja päättää operatiiviset tavoitteet; lähettää matkan varrella salaisia sähkeitä; avaa ja sulkee tarinan pääjuonen ovia."
+  },
+  {
+    "Nimi": "Aleksandr Samsonov",
+    "Kasikirjoituksen_vaihe": "Prologi → Etelä-Venäjä / Turkestan",
+    "Tausta": "Venäläinen upseeri, joka palveli Turkestanin sotilaspiireissä ennen myöhempää, traagista uraansa Itä-Preussissa.",
+    "Motivaatiot": "Modernisoida Venäjän rajajoukkoja; vahvistaa omaa sotilasmainettaan; vastustaa brittien vaikutusta Keski-Aasiassa.",
+    "Puhetapa": "Sotilaallinen, käskymäinen ja usein kireä; käyttää lyhyitä, käskymäisiä lauseita.",
+    "Rooli": "Antaa sotilastehtäviä ja arvioi pelaajan kykyä; neuvoo rajaseudun vaaroista; toimii Venäjän sotilaallisen näkökulman äänenä varhaisessa vaiheessa."
+  },
+  {
+    "Nimi": "Kasakka Sergei Sokolov",
+    "Kasikirjoituksen_vaihe": "Etelä-Venäjä → Keski-Aasia",
+    "Tausta": "Koostehahmo venäläisistä kasakoista, jotka toimivat rajavartiostossa ja saattueiden suojana.",
+    "Motivaatiot": "Suojella karavaania ja sen komentajaa; osoittaa uskollisuutensa; saada mainetta taitavana ratsumiehenä.",
+    "Puhetapa": "Suora, värikäs ja miehekäs; käyttää sotilasslangia ja huumoria, mutta osaa myös olla vakava.",
+    "Rooli": "Vastaa taistelusta ja turvallisuudesta; tarjoaa neuvoja reittivalinnoissa; nuotiokeskusteluissa valaisee sotilaiden arkea ja rintamakuulumisia."
+  },
+  {
+    "Nimi": "Nils Gustaf Enbom",
+    "Kasikirjoituksen_vaihe": "Keski-Aasia (Tashkent–Osh)",
+    "Tausta": "Ruotsalainen lähetyssaarnaaja, joka työskenteli Keski-Aasian alueilla 1900-luvun alussa ja tunsi paikalliskansat ja kielet hyvin.",
+    "Motivaatiot": "Paikallisten tukeminen; rauhan ja vakauden ylläpito; kristinuskon ja lukutaidon levittäminen.",
+    "Puhetapa": "Lempeä ja rauhallinen; käyttää useita kieliä sekaisin (turkkilaisia kieliä, venäjää, paikallisia murteita); välttelee karkeaa kieltä.",
+    "Rooli": "Toimii tulkkina ja kulttuurisena sillanrakentajana; antaa varoituksia ja neuvoja heimopäälliköistä; tarjoaa vaihtoehtoisia, väkivallattomia ratkaisuja konflikteihin."
+  },
+  {
+    "Nimi": "Kurmanjan Datka",
+    "Kasikirjoituksen_vaihe": "Keski-Aasia (Osh–Gulcha)",
+    "Tausta": "Kirgisian etelän Alai-alueen legendaarinen naisjohtaja, \"Alain tsaaritar\", joka tasapainoili venäläisten ja paikallisten emiirien välissä.",
+    "Motivaatiot": "Suojella omaa kansaansa; säilyttää vaikutusvaltansa suurvaltojen puristuksessa; varmistaa rauha ja kaupan jatkuvuus laaksoissa.",
+    "Puhetapa": "Hidas, arvokas ja vähäsanainen; käyttää vertauskuvia kunniasta ja vastuusta.",
+    "Rooli": "Voi myöntää tai evätä turvatun läpikulkureitin; ratkoo kiistoja venäläisten upseerien ja paikallisten välillä; antaa siunausta tai varoituksia pelaajan valintojen mukaan."
+  },
+  {
+    "Nimi": "Sir George Macartney",
+    "Kasikirjoituksen_vaihe": "Xinjiang – Kashgar",
+    "Tausta": "Britannian konsuli Kashgarissa, yksi Great Game -ajan keskeisistä hahmoista Xinjiangissa.",
+    "Motivaatiot": "Suojella Britannian poliittisia ja taloudellisia etuja; kerätä tietoa Venäjän ja Kiinan liikkeistä; arvioida Mannerheimin lojaalisuutta.",
+    "Puhetapa": "Erittäin kohtelias ja älykäs; käyttää hienovaraista ironiaa ja kysymyksiä, jotka paljastavat enemmän kuin sanovat.",
+    "Rooli": "Tarjoaa tiedonvaihtoa ja diplomatiahaasteita; voi olla sekä liittolainen että kilpailija; avaa brittien tehtävälinjan, jos luottamus kasvaa."
+  },
+  {
+    "Nimi": "Lady Catherine Macartney",
+    "Kasikirjoituksen_vaihe": "Xinjiang – Kashgar",
+    "Tausta": "George Macartneyn puoliso, joka johti brittiläisen siirtokunnan sosiaalista elämää Kashgarissa ja toimi epävirallisena diplomaatina.",
+    "Motivaatiot": "Suojella brittiyhteisön perheitä; ylläpitää sivistynyttä elämää äärialueella; tukea Britannian etuja pehmeän vallan keinoin.",
+    "Puhetapa": "Sivistynyt, hienovarainen ja tarkkanäköinen; esittää kysymyksiä, jotka kartoittavat toisten motiiveja.",
+    "Rooli": "Johdattaa pelaajan brittien sosiaalisiin piireihin; antaa hienovaraisia poliittisia vihjeitä; voi vaikuttaa Macartneyn luottamukseen pelaajaa kohtaan."
+  },
+  {
+    "Nimi": "Muhammad Subhi (Subhi Effendi)",
+    "Kasikirjoituksen_vaihe": "Xinjiang – Kashgar",
+    "Tausta": "Ottomaanien edustaja ja konsuli Kashgarissa, jolla oli laaja verkosto muslimiyhteisöissä.",
+    "Motivaatiot": "Vahvistaa ottomaanien vaikutusta Keski-Aasiassa; suojella muslimiväestön etuja; rajoittaa länsivaltojen vaikutusta muslimialueilla.",
+    "Puhetapa": "Formaalinen ja diplomaattinen; retorinen ja sanavalinnoissaan tarkka; kohtelias myös vihamielisten keskustelijoiden kanssa.",
+    "Rooli": "Avain muslimiyhteisöjen politiikkaan; voi tarjota turvaa tietyillä alueilla; tasapainottaa brittien ja venäläisten vaikutusta pelaajan valinnoista riippuen."
+  },
+  {
+    "Nimi": "Sergei A. Kolokolov",
+    "Kasikirjoituksen_vaihe": "Xinjiang – Kashgar",
+    "Tausta": "Venäläinen diplomaatti ja konsuli, Petrovskin seuraaja Kashgarissa; tunnettu myös käsikirjoitusten kerääjänä.",
+    "Motivaatiot": "Vahvistaa Venäjän vaikutusvaltaa Xinjiangissa; kerätä arvokasta kulttuuri- ja tiedustelumateriaalia Pietariin; pitää brittien ja kiinalaisten liikkeet silmällä.",
+    "Puhetapa": "Virallinen ja byrokraattinen, mutta osaa myös venäläisen kuivan huumorin; vaihtaa tarvittaessa kieltä venäjästä ranskaan tai englantiin.",
+    "Rooli": "Pelaajan tärkein venäläinen tukipiste Kashgarissa; antaa kulkulupia, suosituskirjeitä ja ajankohtaisia poliittisia raportteja; linkittää tieteelliset ja sotilaalliset linjat yhteen."
+  },
+  {
+    "Nimi": "Nikolai N. Krotkov",
+    "Kasikirjoituksen_vaihe": "Xinjiang – Urumqi",
+    "Tausta": "Venäläinen konsuli Urumqissa ja myöhemmin Kuldjassa, merkittävä uiguurinkielisten tekstien ja käsikirjoitusten kerääjä.",
+    "Motivaatiot": "Tieteellinen kunnianhimo; rakentaa nimeään suurten käsikirjoituskokoelmien kautta; suojella venäläisten kauppareittejä ja siirtolaisia.",
+    "Puhetapa": "Oppinut, kuivakka ja hieman hajamielinen; viittaa usein aikaisempiin löytöihin ja bibliografisiin yksityiskohtiin.",
+    "Rooli": "Tarjoaa käsikirjoitus- ja artefaktitehtäviä; palkitsee pelaajan majoituksella, oppailla ja tiedolla kapinaliikkeistä Gansun ja Xinjiangin rajalla."
+  },
+  {
+    "Nimi": "Paul Pelliot",
+    "Kasikirjoituksen_vaihe": "Xinjiang → Irkeshtam / Silkkitie",
+    "Tausta": "Ranskalainen sinologi ja arkeologi, johti Ranskan retkikuntaa Samarkandista Kiinaan 1906–1909 ja kulki osin samoja reittejä Mannerheimin kanssa.",
+    "Motivaatiot": "Kerätä harvinaisia käsikirjoituksia ja tekstejä ennen kilpailijoita; osoittaa ranskalaisen sinologian ylemmyys; nostaa omaa tieteellistä mainetta.",
+    "Puhetapa": "Erittäin oppinut, usein sarkastinen; pitää pitkiä monologeja kiinankielisistä lähteistä ja buddhalaisesta filosofiasta.",
+    "Rooli": "Toimii tieteellisenä kilpailijana ja ajoittaisena matkakumppanina; tarjoaa mahdollisuuksia yhteistyöhön tai konfliktin kärjistymiseen; jakaa karttoja ja vihjeitä luolista vastapalveluksia vastaan."
+  },
+  {
+    "Nimi": "Count Ōtani Kōzui",
+    "Kasikirjoituksen_vaihe": "Turpan / Gansu",
+    "Tausta": "Japanilainen buddhalaisapotti ja Nishi Honganji -temppelin johtaja, joka rahoitti useita Keski-Aasian tutkimusretkiä 1902–1914.",
+    "Motivaatiot": "Tutkia buddhalaisuuden leviämistä Keski-Aasian kautta; nostaa Japanin tieteellistä ja kulttuurista arvovaltaa; tasapainoilla länsivaltojen kanssa.",
+    "Puhetapa": "Erittäin kohtelias ja hillitty; puhuu hengellisestä perinteestä, mutta seuraa tarkasti poliittisia signaaleja.",
+    "Rooli": "Kohtaa Mannerheimin buddhalaisissa kohteissa; vaihtaa tietoa luolastoista ja temppeleistä; pyytää seuraamaan brittien ja venäläisten reaktioita japanilaisiin retkikuntiin."
+  },
+  {
+    "Nimi": "Albert von Le Coq",
+    "Kasikirjoituksen_vaihe": "Turpan / Kucha / Kizil",
+    "Tausta": "Saksalainen etnologisen museon tutkija, Turfanin retkikuntien johtohahmo, joka vei Saksaan suuria määriä buddhataidetta ja käsikirjoituksia.",
+    "Motivaatiot": "Tuoda Saksan museoihin näyttävimpiä Keski-Aasian taideaarteita; päihittää britti-, ranska- ja japanilaiskollegat; vahvistaa Saksan tiedemmainetta.",
+    "Puhetapa": "Hyvin itsevarma, jopa röyhkeä; yhdistää kohteliaan muodollisuuden pisteliäisiin kommentteihin kilpailijoista.",
+    "Rooli": "Osallistuu Turpanin ja Kucha–Kizilin luolastojen tavoitteluun; tarjoaa yhteisiä retkiä, joissa pelaaja joutuu valitsemaan, puolustaako taidetta vai tukee Le Coqin kokoelmahankkeita."
+  },
+  {
+    "Nimi": "Aurel Stein",
+    "Kasikirjoituksen_vaihe": "Dunhuang / Silkkitie",
+    "Tausta": "Brittiläinen arkeologi ja tutkimusmatkailija, kuuluisa Dunhuangin luolien ja Silkkitien muinaisjäännösten tutkimisesta.",
+    "Motivaatiot": "Löytää ja dokumentoida muinaisia käsikirjoituksia; ohittaa kilpailijat kuten Pelliot ja Le Coq; vahvistaa brittien tieteellistä mainetta.",
+    "Puhetapa": "Intohimoinen ja hiukan hajamielinen; uppoutuu pitkiin selityksiin muinaisista kulttuureista; välillä irtautunut käytännön vaaroista.",
+    "Rooli": "Tarjoaa arkeologisia tehtäviä Dunhuangissa; pyytää apua käsikirjoitusten löytämisessä ja suojaamisessa; toimii tiedon lähteenä Silkkitien historiasta ja geopoliittisesta merkityksestä."
+  },
+  {
+    "Nimi": "Taixu",
+    "Kasikirjoituksen_vaihe": "Gansu / luostarialueet",
+    "Tausta": "Nuori, myöhemmin merkittävä kiinalainen buddhalaisuuden uudistaja; matkusti luostareissa 1900-luvun alussa.",
+    "Motivaatiot": "Oppia ja kerätä opetuksia eri luostareista; kehittää buddhalaisuuden tulkintaa modernimpaan suuntaan; edistää rauhaa levottomilla alueilla.",
+    "Puhetapa": "Harkitseva ja viisas yli ikänsä; puhuu runollisesti ja vertauskuvien kautta; kysyy mieluummin kuin väittää.",
+    "Rooli": "Toimii hengellisenä oppaana ja moraalisena peilinä; antaa sivutehtäviä, jotka liittyvät väkivallan välttämiseen ja sovitteluun; tarjoaa vihjeitä vuoristoreiteistä loukkaamatta paikallisia perinteitä."
+  },
+  {
+    "Nimi": "Punaviitta-Lama",
+    "Kasikirjoituksen_vaihe": "Labrang / Tiibetin luostarit",
+    "Tausta": "Yhdistelmä Labrangin ja muiden tiibetiläisten luostareiden johtavista lamoista; luostarin hengellinen ja poliittinen auktoriteetti.",
+    "Motivaatiot": "Suojella luostaria ja sen munkkeja; pitää yllä perinteisiä rituaaleja; tasapainottaa hengellisen elämän ja Qing-hallinnon sekä ulkovaltojen paineen.",
+    "Puhetapa": "Rauhallinen, mietiskelevä ja symbolinen; lauseet ovat pitkiä ja täynnä vertauskuvia; suuttuessaan muuttuu kylmän lyhytsanaiseksi.",
+    "Rooli": "Portinvartija Labrangiin ja ympäröiviin vuoristoreitteihin; asettaa hengellisiä testejä; voi ohjata pelaajaa kohti Dalai-laman kohtaamista tai varoittaa liiasta yhteistyöstä arkeologien kanssa."
+  },
+  {
+    "Nimi": "Zhang Zhidong",
+    "Kasikirjoituksen_vaihe": "Xi’an / Peking",
+    "Tausta": "Qing-dynastian vaikutusvaltainen reformipoliitikko, sotilaallisen modernisaation tärkeä arkkitehti.",
+    "Motivaatiot": "Modernisoida Kiina länsimaisista malleista oppien; vahvistaa armeijaa erityisesti rajaseuduilla; tasapainottaa konservatiivista hovipuoluetta ja ulkovaltoja.",
+    "Puhetapa": "Älykäs ja opetuksellinen; yhdistää klassisen kiinalaisen ajattelun ja länsimaiset viittaukset; puhuu kohteliaasti mutta analysoi terävästi.",
+    "Rooli": "Selittää Mannerheimille Kiinan sisäiset uudistukset; antaa taustaa sekä Yuan Shikain että Qingin linjavalinnoille; voi tarjota käyttöluvan tarkastella uudistettuja joukkoja."
+  },
+  {
+    "Nimi": "Yuan Shikai",
+    "Kasikirjoituksen_vaihe": "Peking / Pohjois-Kiina",
+    "Tausta": "Qing-dynastian modernin armeijan rakentaja, myöhemmin Kiinan tasavallan presidentti.",
+    "Motivaatiot": "Vahvistaa omaa valtaansa; luoda tehokas ja lojaali moderni armeija; pelata ulkovallat toisiaan vastaan Kiinan eduksi – tai omakseen.",
+    "Puhetapa": "Mahtipontinen ja itsevarma; tarjoaa apua käskymuotoisesti; yhdistää ystävällisen sävyn uhkaaviin vivahteisiin.",
+    "Rooli": "Esittelee armeijan uudistuksia ja joukkoharjoituksia; jakaa sotilaallista analyysiä, jota Venäjän tiedustelu janoaa; epäilee Mannerheimia vakoojaksi, jos tämän valinnat näyttävät liian epärehellisiltä."
+  },
+  {
+    "Nimi": "Zaifeng (Prince Chun)",
+    "Kasikirjoituksen_vaihe": "Peking / Hovi",
+    "Tausta": "Qing-dynastian korkea prinssi ja myöhempi regentti, jolla oli ratkaiseva rooli hovipolitiikassa.",
+    "Motivaatiot": "Suojella lapsikeisarin tulevaisuutta; pitää hovi yhtenäisenä; rajoittaa ulkovaltojen vaikutusta Kiinan sisäpolitiikkaan.",
+    "Puhetapa": "Etäinen ja arvovaltainen; välttelee suoria vastauksia; voi yhtäkkiä muuttua teräväksi, jos kokee uhkaa.",
+    "Rooli": "Vaikeimmin tavoitettava hovihahmo; lyhyt mutta tärkeä yleisö voi paljastaa Kiinan poliittisen kriisin suunnan; pelaajan valinnat aiempien QING-hahmojen kanssa määrittävät, pääseekö tätä kohtaamista koskaan näkemään."
+  },
+  {
+    "Nimi": "Mandariini Li Wen",
+    "Kasikirjoituksen_vaihe": "Peking / Byrokratia",
+    "Tausta": "Kokenut Qing-hallinnon virkamies, joka tuntee hovin salaisuudet mutta pelkää riskejä.",
+    "Motivaatiot": "Pitää rauha ja järjestys yllä; suojella omaa virka-asemaansa; estää skandaalit ja häiriöt.",
+    "Puhetapa": "Erittäin kohtelias ja pitkäsanainen; kiertää suorat vastaukset; käyttää klassisia sanontoja ja viitteitä.",
+    "Rooli": "Portinvartija byrokratian sokkeloissa; hallitsee kulkulupia ja asiakirjoja; voi joko nopeuttaa tai sabotoida pelaajan pääsyä hovin ja armeijan piireihin luottamustason mukaan."
+  },
+  {
+    "Nimi": "Kenraali Zhao Rong",
+    "Kasikirjoituksen_vaihe": "Peking / Hohhot / Xi’an",
+    "Tausta": "Qing-uudistusten aikainen sotilasjohtaja (koostehahmo useista uudistusmielisistä kenraaleista), joka pyrkii modernisoimaan armeijaa.",
+    "Motivaatiot": "Modernisoida armeijan aseistus ja taktiikka; torjua korruptio; vakuuttaa hoville uudistusten välttämättömyys.",
+    "Puhetapa": "Suora, terävä ja päättäväinen; sekoittaa kiinalaisia ja eurooppalaisia sotilastermejä; kärsimätön hitaiden tai epämääräisten ihmisten kanssa.",
+    "Rooli": "Antaa sotilaallisia arviointitehtäviä; päästää pelaajan tarkkailemaan varuskuntia ja joukkoja; toimii sillanrakentajana Yuan Shikain ja paikallisten komentajien välillä."
+  },
+  {
+    "Nimi": "Song Yun",
+    "Kasikirjoituksen_vaihe": "Xinjiang / Hallintokeskus",
+    "Tausta": "Xinjiangin kuvernööri 1906–1909, Qing-dynastian korkea virkamies.",
+    "Motivaatiot": "Säilyttää rauha ja järjestys Xinjiangissa; estää venäläisten ja brittien liiallisen vaikutuksen; esittää Pekingille kaiken mahdollisimman hallittuna.",
+    "Puhetapa": "Äärimmäisen muodollinen ja byrokraattinen; puhuu pitkään sanomatta juuri mitään; käyttää hierarkkista puhuttelua.",
+    "Rooli": "Portinvartija kulkuluville ja sotilaalliselle tiedolle Xinjiangissa; pelaaja voi tukea tai horjuttaa hänen hallintoaan; valinnat vaikuttavat uiguurijohtajien ja muslimiyhteisöjen suhtautumiseen."
+  },
+  {
+    "Nimi": "Thubten Gyatso (13. Dalai-lama)",
+    "Kasikirjoituksen_vaihe": "Wutai Shan / Matkan huipennus",
+    "Tausta": "Tiibetin hengellinen ja poliittinen johtaja, joka oli maanpaossa Kiinassa ja tapasi Mannerheimin Wutai Shanilla.",
+    "Motivaatiot": "Suojella Tiibetin itsenäisyyttä Kiinan ja suurvaltojen paineessa; löytää ulkomaisia liittolaisia; modernisoida Tiibetiä varovaisesti.",
+    "Puhetapa": "Lempeä ja rauhallinen mutta poliittisesti hyvin terävä; käyttää hengellisiä tarinoita ja vertauksia politiikan kommentointiin.",
+    "Rooli": "Pelin hengellinen ja moraalinen huipennus; tarjoaa siunauksen ja luottamuksellisen poliittisen keskustelun; pelaajan raportointivalinnat Pietariin määrittävät, pettääkö vai suojeleeko hän Dalai-laman luottamusta."
+  },
+  {
+    "Nimi": "Pyotr Kuzmich Kozlov",
+    "Kasikirjoituksen_vaihe": "Mongolia / Pohjoinen reitti",
+    "Tausta": "Venäläinen tutkimusmatkailija, Nikolai Prževalskin oppilas, joka johti Mongolian ja Gobi-erämaan retkikuntia 1907–1909.",
+    "Motivaatiot": "Tutkia kartan valkoisia läiskiä; tuoda Venäjälle tieteellistä mainetta; kilpailla länsimaisten tutkimusmatkailijoiden kanssa.",
+    "Puhetapa": "Maanläheinen, suorasanainen ja seikkailuhenkinen; kertoo mielellään tarinoita erämaan vaaroista.",
+    "Rooli": "Sivukohtaaminen, joka tarjoaa tietoa reiteistä ja linnoituksista; pyytää pelaajaa välittämään viestejä venäläisille tiedeseuroille; vahvistaa käsitystä Venäjän laajasta tutkimusverkostosta."
+  },
+  {
+    "Nimi": "Harmaa Susi",
+    "Kasikirjoituksen_vaihe": "Keski-Aasia – vuoristot / syrjäseudut",
+    "Tausta": "Koostehahmo Keski-Aasian vuoristojen rosvopäälliköistä, joita sekä paikalliset että karavaanit pelkäsivät.",
+    "Motivaatiot": "Raha ja valta; oman joukon hengissä pitäminen; pelon maineen ylläpito.",
+    "Puhetapa": "Lyhyt, uhkaava ja matala; puhuu harvoin, mutta painokkaasti; ei paljasta koskaan kaikkea.",
+    "Rooli": "Uhka tai varovainen yhteistyökumppani; vaatii lunnaita ja tarjoaa vastineeksi turvattuja reittejä; voi ryöstää karavaanin, jos pelaaja pettää sopimukset."
+  },
+  {
+    "Nimi": "Tursun Beg",
+    "Kasikirjoituksen_vaihe": "Xinjiang – kyläalueet ja karavaanireitit",
+    "Tausta": "Koostehahmo historiallisista uiguuripäälliköistä ja paikallisjohtajista, joiden sana painoi Itä-Turkestanin kylissä.",
+    "Motivaatiot": "Suojella heimoaan ja kyliään; säilyttää kaupan jatkuvuus; tasapainoilla Qing-hallinnon, venäläisten ja brittien välillä.",
+    "Puhetapa": "Hidas, painokas ja varautunut; käyttää sananparsia ja vertauskuvia; voi vaihtaa mielipidettä nopeasti poliittisen tilanteen mukaan.",
+    "Rooli": "Neuvottelee kulkuluvista ja turvamaksuista; tarjoaa tehtäviä luottamuksen lisäämiseksi; paljastaa tietoa rosvojoukoista ja kapinaliikkeistä pelaajan valintojen mukaan."
+  }
+]

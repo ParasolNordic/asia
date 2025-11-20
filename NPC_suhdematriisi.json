@@ -1,0 +1,2441 @@
+{
+  "relation_codes_legend": {
+    "SELF": "Same NPC",
+    "NONE": "No significant direct relationship defined",
+    "ALLY": "Yleinen liittolaisuus tai myönteinen suhde",
+    "INFO": "Tiedonvaihto / asiantuntija- tai konsulikanava",
+    "POL": "Poliittinen suhde, usein vallankäyttöä tai valtataistelua",
+    "RIVAL": "Kilpailu (tieteellinen, poliittinen, sotilaallinen tms.)",
+    "OPP": "Avoin tai piilevä vihamielisyys / vastakkaiset tavoitteet",
+    "RELIG": "Hengellinen / uskonnollinen yhteys",
+    "RESPECT": "Keskinäinen kunnioitus ilman varsinaista liittolaisuutta",
+    "DEBATE": "Aatteellinen tai teologinen väittelysuhde"
+  },
+  "npcs": [
+    {
+      "id": "trepov",
+      "name": "Dmitri Trepov"
+    },
+    {
+      "id": "kf",
+      "name": "Everstiluutnantti \"K.F.\""
+    },
+    {
+      "id": "samsonov",
+      "name": "Aleksandr Samsonov"
+    },
+    {
+      "id": "sokolov",
+      "name": "Kasakka Sergei Sokolov"
+    },
+    {
+      "id": "enbom",
+      "name": "Nils Gustaf Enbom"
+    },
+    {
+      "id": "kurmanjan_datka",
+      "name": "Kurmanjan Datka"
+    },
+    {
+      "id": "macartney",
+      "name": "Sir George Macartney"
+    },
+    {
+      "id": "catherine_macartney",
+      "name": "Lady Catherine Macartney"
+    },
+    {
+      "id": "subhi_effendi",
+      "name": "Muhammad Subhi (Subhi Effendi)"
+    },
+    {
+      "id": "kolokolov",
+      "name": "Sergei A. Kolokolov"
+    },
+    {
+      "id": "krotkov",
+      "name": "Nikolai N. Krotkov"
+    },
+    {
+      "id": "pelliot",
+      "name": "Paul Pelliot"
+    },
+    {
+      "id": "otani",
+      "name": "Count Ōtani Kōzui"
+    },
+    {
+      "id": "le_coq",
+      "name": "Albert von Le Coq"
+    },
+    {
+      "id": "stein",
+      "name": "Aurel Stein"
+    },
+    {
+      "id": "taixu",
+      "name": "Taixu"
+    },
+    {
+      "id": "punaviitta_lama",
+      "name": "Punaviitta-Lama"
+    },
+    {
+      "id": "zhang_zhidong",
+      "name": "Zhang Zhidong"
+    },
+    {
+      "id": "yuan_shikai",
+      "name": "Yuan Shikai"
+    },
+    {
+      "id": "zaifeng",
+      "name": "Zaifeng (Prince Chun)"
+    },
+    {
+      "id": "li_wen",
+      "name": "Mandariini Li Wen"
+    },
+    {
+      "id": "zhao_rong",
+      "name": "Kenraali Zhao Rong"
+    },
+    {
+      "id": "song_yun",
+      "name": "Song Yun"
+    },
+    {
+      "id": "dalai_lama",
+      "name": "Thubten Gyatso (13. Dalai-lama)"
+    },
+    {
+      "id": "kozlov",
+      "name": "Pyotr Kuzmich Kozlov"
+    },
+    {
+      "id": "harmaa_susi",
+      "name": "Harmaa Susi"
+    },
+    {
+      "id": "tursun_beg",
+      "name": "Tursun Beg"
+    }
+  ],
+  "matrix": {
+    "trepov": {
+      "trepov": [
+        "SELF"
+      ],
+      "kf": [
+        "ALLY",
+        "POL"
+      ],
+      "samsonov": [
+        "ALLY",
+        "POL"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "ALLY",
+        "POL"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "kf": {
+      "trepov": [
+        "ALLY",
+        "POL"
+      ],
+      "kf": [
+        "SELF"
+      ],
+      "samsonov": [
+        "ALLY",
+        "POL"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "ALLY",
+        "POL"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "samsonov": {
+      "trepov": [
+        "ALLY",
+        "POL"
+      ],
+      "kf": [
+        "ALLY",
+        "POL"
+      ],
+      "samsonov": [
+        "SELF"
+      ],
+      "sokolov": [
+        "ALLY"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "POL",
+        "OPP"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "sokolov": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "ALLY"
+      ],
+      "sokolov": [
+        "SELF"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "enbom": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "SELF"
+      ],
+      "kurmanjan_datka": [
+        "ALLY",
+        "RESPECT"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "ALLY",
+        "RESPECT"
+      ]
+    },
+    "kurmanjan_datka": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "POL",
+        "OPP"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "ALLY",
+        "RESPECT"
+      ],
+      "kurmanjan_datka": [
+        "SELF"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "RIVAL",
+        "OPP"
+      ],
+      "tursun_beg": [
+        "ALLY",
+        "POL"
+      ]
+    },
+    "macartney": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "SELF"
+      ],
+      "catherine_macartney": [
+        "ALLY"
+      ],
+      "subhi_effendi": [
+        "POL",
+        "OPP"
+      ],
+      "kolokolov": [
+        "RIVAL",
+        "POL"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "ALLY",
+        "INFO"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "catherine_macartney": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "ALLY"
+      ],
+      "catherine_macartney": [
+        "SELF"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "ALLY"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "subhi_effendi": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "POL",
+        "OPP"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "SELF"
+      ],
+      "kolokolov": [
+        "POL",
+        "RIVAL"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "POL",
+        "OPP"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "ALLY",
+        "POL"
+      ]
+    },
+    "kolokolov": {
+      "trepov": [
+        "ALLY",
+        "POL"
+      ],
+      "kf": [
+        "ALLY",
+        "POL"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "RIVAL",
+        "POL"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "POL",
+        "RIVAL"
+      ],
+      "kolokolov": [
+        "SELF"
+      ],
+      "krotkov": [
+        "ALLY",
+        "INFO"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "POL",
+        "INFO"
+      ],
+      "le_coq": [
+        "POL",
+        "INFO"
+      ],
+      "stein": [
+        "POL",
+        "INFO"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "ALLY",
+        "INFO"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "krotkov": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "ALLY",
+        "INFO"
+      ],
+      "krotkov": [
+        "SELF"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "ALLY",
+        "INFO"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "pelliot": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "SELF"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "RIVAL"
+      ],
+      "stein": [
+        "RIVAL"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "otani": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "POL",
+        "INFO"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "SELF"
+      ],
+      "le_coq": [
+        "RIVAL"
+      ],
+      "stein": [
+        "RIVAL"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "le_coq": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "POL",
+        "INFO"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "RIVAL"
+      ],
+      "otani": [
+        "RIVAL"
+      ],
+      "le_coq": [
+        "SELF"
+      ],
+      "stein": [
+        "RIVAL"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "RIVAL",
+        "INFO"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "stein": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "ALLY",
+        "INFO"
+      ],
+      "catherine_macartney": [
+        "ALLY"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "POL",
+        "INFO"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "RIVAL"
+      ],
+      "otani": [
+        "RIVAL"
+      ],
+      "le_coq": [
+        "RIVAL"
+      ],
+      "stein": [
+        "SELF"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "RIVAL",
+        "INFO"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "taixu": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "SELF"
+      ],
+      "punaviitta_lama": [
+        "RELIG",
+        "DEBATE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "RELIG",
+        "ALLY"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "punaviitta_lama": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "RELIG",
+        "DEBATE"
+      ],
+      "punaviitta_lama": [
+        "SELF"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "RELIG"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "zhang_zhidong": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "SELF"
+      ],
+      "yuan_shikai": [
+        "POL",
+        "RIVAL"
+      ],
+      "zaifeng": [
+        "POL",
+        "ALLY"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "ALLY",
+        "POL"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "yuan_shikai": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "POL",
+        "RIVAL"
+      ],
+      "yuan_shikai": [
+        "SELF"
+      ],
+      "zaifeng": [
+        "POL",
+        "OPP"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "ALLY",
+        "POL"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "POL",
+        "OPP"
+      ],
+      "kozlov": [
+        "POL",
+        "OPP"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "zaifeng": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "POL",
+        "ALLY"
+      ],
+      "yuan_shikai": [
+        "POL",
+        "OPP"
+      ],
+      "zaifeng": [
+        "SELF"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "POL",
+        "OPP"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "li_wen": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "SELF"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "ALLY",
+        "POL"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "zhao_rong": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "ALLY",
+        "POL"
+      ],
+      "yuan_shikai": [
+        "ALLY",
+        "POL"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "SELF"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "song_yun": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "POL",
+        "OPP"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "ALLY",
+        "POL"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "SELF"
+      ],
+      "dalai_lama": [
+        "POL",
+        "OPP"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "dalai_lama": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "RELIG",
+        "ALLY"
+      ],
+      "punaviitta_lama": [
+        "RELIG"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "POL",
+        "OPP"
+      ],
+      "zaifeng": [
+        "POL",
+        "OPP"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "POL",
+        "OPP"
+      ],
+      "dalai_lama": [
+        "SELF"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "kozlov": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "NONE"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "ALLY",
+        "INFO"
+      ],
+      "krotkov": [
+        "ALLY",
+        "INFO"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "RIVAL",
+        "INFO"
+      ],
+      "stein": [
+        "RIVAL",
+        "INFO"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "POL",
+        "OPP"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "SELF"
+      ],
+      "harmaa_susi": [
+        "NONE"
+      ],
+      "tursun_beg": [
+        "NONE"
+      ]
+    },
+    "harmaa_susi": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "NONE"
+      ],
+      "kurmanjan_datka": [
+        "RIVAL",
+        "OPP"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "NONE"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "SELF"
+      ],
+      "tursun_beg": [
+        "RIVAL",
+        "OPP"
+      ]
+    },
+    "tursun_beg": {
+      "trepov": [
+        "NONE"
+      ],
+      "kf": [
+        "NONE"
+      ],
+      "samsonov": [
+        "NONE"
+      ],
+      "sokolov": [
+        "NONE"
+      ],
+      "enbom": [
+        "ALLY",
+        "RESPECT"
+      ],
+      "kurmanjan_datka": [
+        "ALLY",
+        "POL"
+      ],
+      "macartney": [
+        "NONE"
+      ],
+      "catherine_macartney": [
+        "NONE"
+      ],
+      "subhi_effendi": [
+        "ALLY",
+        "POL"
+      ],
+      "kolokolov": [
+        "NONE"
+      ],
+      "krotkov": [
+        "NONE"
+      ],
+      "pelliot": [
+        "NONE"
+      ],
+      "otani": [
+        "NONE"
+      ],
+      "le_coq": [
+        "NONE"
+      ],
+      "stein": [
+        "NONE"
+      ],
+      "taixu": [
+        "NONE"
+      ],
+      "punaviitta_lama": [
+        "NONE"
+      ],
+      "zhang_zhidong": [
+        "NONE"
+      ],
+      "yuan_shikai": [
+        "NONE"
+      ],
+      "zaifeng": [
+        "NONE"
+      ],
+      "li_wen": [
+        "NONE"
+      ],
+      "zhao_rong": [
+        "NONE"
+      ],
+      "song_yun": [
+        "NONE"
+      ],
+      "dalai_lama": [
+        "NONE"
+      ],
+      "kozlov": [
+        "NONE"
+      ],
+      "harmaa_susi": [
+        "RIVAL",
+        "OPP"
+      ],
+      "tursun_beg": [
+        "SELF"
+      ]
+    }
+  }
+}
