@@ -45,19 +45,32 @@ class GameEngine {
       
       // AI Client ja Worker (valinnainen)
       if (window.AI_PROXY_ENABLED) {
-        this.aiClient = new AIClient({
-          proxyURL: window.AI_PROXY_URL || 'https://ai-proxy.arkisto-kaksi.workers.dev',
-          maxTokens: 150
-        });
-        
-        this.aiWorker = new AIWorker({
-          npcs: this.coreData.npcs,
-          npcRules: this.coreData.npcRules,
-          moduleDiplomacy: this.prologueData.diplomacy,
-          aiProfiles: this.prologueData.aiProfiles
-        }, {
-          proxyURL: window.AI_PROXY_URL
-        });
+        try {
+          console.log('🤖 Initializing AI modules...');
+          
+          this.aiClient = new AIClient({
+            proxyURL: window.AI_PROXY_URL || 'https://ai-proxy.arkisto-kaksi.workers.dev',
+            maxTokens: 150
+          });
+          
+          this.aiWorker = new AIWorker({
+            npcs: this.coreData.npcs,
+            npcRules: this.coreData.npcRules,
+            moduleDiplomacy: this.prologueData.diplomacy,
+            aiProfiles: this.prologueData.aiProfiles
+          }, {
+            proxyURL: window.AI_PROXY_URL
+          });
+
+          console.log('✅ AI modules initialized');
+        } catch (error) {
+          console.warn('⚠️ AI modules failed to initialize:', error);
+          console.warn('Game will continue without AI dialogues');
+          this.aiClient = null;
+          this.aiWorker = null;
+        }
+      } else {
+        console.log('ℹ️ AI dialogues disabled (AI_PROXY_ENABLED = false)');
       }
 
       this.isInitialized = true;
@@ -165,22 +178,33 @@ class GameEngine {
   handleHubState(state, stateId) {
     const aiDialogue = state.ai_dialogue;
 
-    if (!aiDialogue || !this.aiWorker) {
-      // Ei AI-dialogia tai AI ei käytössä - skipaa
+    // Tarkista onko AI käytettävissä
+    const aiEnabled = window.AI_PROXY_ENABLED && this.aiWorker && this.aiClient;
+
+    if (!aiDialogue || !aiEnabled) {
+      // Ei AI-dialogia tai AI ei käytössä - skipaa automaattisesti
+      console.log('⏭️ Skipping AI dialogue (AI not enabled or not available)');
       this.stateMachine.transition();
       this.processCurrentState();
       return;
     }
 
     // Tarjoa AI-dialogia
-    const npcProfile = this.aiWorker.getNPCProfile(aiDialogue.npc_id);
-    
-    this.renderer.renderAIDialogue(
-      aiDialogue.npc_id,
-      npcProfile.name,
-      (text) => this.handleAIDialogueSubmit(state, aiDialogue.npc_id, text),
-      () => this.handleAIDialogueSkip()
-    );
+    try {
+      const npcProfile = this.aiWorker.getNPCProfile(aiDialogue.npc_id);
+      
+      this.renderer.renderAIDialogue(
+        aiDialogue.npc_id,
+        npcProfile.name,
+        (text) => this.handleAIDialogueSubmit(state, aiDialogue.npc_id, text),
+        () => this.handleAIDialogueSkip()
+      );
+    } catch (error) {
+      console.error('Error rendering AI dialogue:', error);
+      // Jos virhe, skipaa
+      this.stateMachine.transition();
+      this.processCurrentState();
+    }
   }
 
   /**
