@@ -253,6 +253,9 @@ class GameEngine {
     try {
       const npcProfile = this.aiWorker.getNPCProfile(aiDialogue.npc_id);
       
+      // Näytä NPC-profiili
+      this.renderer.showNPCProfile(npcProfile);
+      
       this.renderer.renderAIDialogue(
         aiDialogue.npc_id,
         npcProfile.name,
@@ -272,6 +275,9 @@ class GameEngine {
    */
   async handleAIDialogueSubmit(state, npcId, playerText) {
     try {
+      // Näytä pelaajan viesti ensin
+      this.renderer.showPlayerMessage(playerText);
+      
       this.renderer.showLoading('AI analysoi vastaustasi...');
 
       // Hae sceneId (POST-hubista täytyy päätellä)
@@ -339,6 +345,10 @@ class GameEngine {
    */
   endDialogue() {
     console.log('✅ Ending dialogue, moving forward');
+    
+    // Piilota NPC-profiili
+    this.renderer.hideNPCProfile();
+    
     this.stateMachine.transition();
     this.processCurrentState();
   }
