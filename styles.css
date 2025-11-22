@@ -77,6 +77,28 @@ main {
   min-height: 400px;
 }
 
+/* Scene Images */
+.scene-image-container {
+  margin: -3rem -3rem 2rem -3rem;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  background: #000;
+}
+
+.scene-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.9;
+}
+
+.scene-image:hover {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
 .scene {
   max-width: 800px;
 }
