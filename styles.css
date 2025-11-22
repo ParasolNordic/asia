@@ -230,6 +230,16 @@ main {
   flex: 1;
 }
 
+/* Navigation Hint */
+.navigation-hint {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: #999;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-color);
+}
+
 /* AI Dialogue */
 .ai-dialogue-container {
   background: white;
