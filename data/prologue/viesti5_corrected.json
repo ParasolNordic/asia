@@ -31,7 +31,7 @@
     {
       "scene_id": "2_trepov_meeting",
       "name": "Trepovin tapaaminen",
-      "image": "images/prologue/scene_1.png",
+      "image": "images/prologue/scene_2.png",
       "html": "<div class='scene prologue-scene' id='scene_2_trepov_meeting'>\n  <h1>Sisäministeriön rakennus</h1>\n  <p>Vihreät samettipaneloinnit ja raskaat ovet sulkeutuvat takanasi. Trepov seisoo ikkunan ääressä, kädet selän takana.</p>\n  <p>Ilmassa leijuu tupakkaa ja vallan tuntu on lähes fyysinen.</p>\n  <p class='npc-intro'>Dmitri Trepov, sisäministeriön virkamies, kääntyy hitaasti. Hänen katseensa on kylmä ja arvioiva.</p>\n</div>",
       "ambient": {
         "lighting": "dim, dark_green_tint",
@@ -48,7 +48,7 @@
     {
       "scene_id": "3_kf_briefing",
       "name": "K.F.:n salainen briiffi",
-      "image": "prologi3.jpg",
+      "image": "images/prologue/scene_3.png",
       "html": "<div class='scene prologue-scene' id='scene_3_kf_briefing'>\n  <h1>Yleisesikunnan karttahuone</h1>\n  <p>Pöydillä on karttoja, mittalaitteita ja salaisia raportteja. K.F. ei nosta katsettaan ennen kuin seisot aivan edessä.</p>\n  <p>Huoneessa on kellertävä valo ja sotilaallinen täsmällisyys.</p>\n  <p class='npc-intro'>Everstiluutnantti K.F., esikuntaupseeri, osoittaa karttaa kylmästi ja metodisesti.</p>\n</div>",
       "ambient": {
         "lighting": "warm_lamp_glow, focused",
@@ -65,7 +65,7 @@
     {
       "scene_id": "4_samsonov_officersclub",
       "name": "Upseerikerho — Samsonov",
-      "image": "prologi4.jpg",
+      "image": "images/prologue/scene_4.png",
       "html": "<div class='scene prologue-scene' id='scene_4_samsonov_officersclub'>\n  <h1>Pietarin upseerikerho</h1>\n  <p>Savukkeenkatku, tumma puu ja vanhat rintamakuvat täyttävät huoneen. Samsonov juo teetä ja näyttää väsyneeltä mutta valppaana.</p>\n  <p>Ilmassa on sodan jälkimaun katkeruus.</p>\n  <p class='npc-intro'>Kenraali Aleksandr Samsonov, rajavyöhykkeen veteraani, tarjoaa istuimen mutta ei hymyile.</p>\n</div>",
       "ambient": {
         "lighting": "golden_lamp, shadowy_corners",
@@ -82,7 +82,7 @@
     {
       "scene_id": "5_personal_crisis",
       "name": "Mannerheimin henkilökohtainen kriisi",
-      "image": "prologi5.jpg",
+      "image": "images/prologue/scene_5.png",
       "html": "<div class='scene prologue-scene' id='scene_5_personal_crisis'>\n  <h1>Mannerheimin asunto</h1>\n  <p>Hiljainen huone, jossa vain hehkuvan uunin punainen valo liikkuu seinillä. Palvelija pakkaa laukkuja. Pöydällä on Anastasian jättämiä papereita.</p>\n  <p>Mannerheim seisoo hetken liikkumatta. Menneisyys tuntuu painavan.</p>\n  <p class='internal-monologue'><em>\"Pietari ei kaipaa minua. Anastasia ei kaipaa minua. Mutta ehkä tämä matka kaipaa minua.\"</em></p>\n</div>",
       "ambient": {
         "lighting": "firelight, warm_shadows",
@@ -99,7 +99,7 @@
     {
       "scene_id": "6_final_briefing_trepov_kf",
       "name": "Loppubriiffi — Trepov + K.F.",
-      "image": "prologi6.jpg",
+      "image": "images/prologue/scene_6.png",
       "html": "<div class='scene prologue-scene' id='scene_6_final_briefing'>\n  <h1>Sotilaskarttahuone</h1>\n  <p>Kiinan kartta on levitetty pöydälle. Punaisia reittiviivoja, merkintöjä rajalinnakkeista ja raporteista.</p>\n  <p>Trepov ja K.F. odottavat. Tämä ei ole keskustelu — tämä on määräys.</p>\n  <p class='narrative'><strong>Trepov:</strong> \"Kiinan lohikäärme nukkuu. Jos se herää, maailma muuttuu.\"</p>\n  <p class='narrative'><strong>K.F.:</strong> \"Te esitätte raporttinne keisarille itselleen, jos elätte siihen asti.\"</p>\n</div>",
       "ambient": {
         "lighting": "cold_desaturated, harsh",
