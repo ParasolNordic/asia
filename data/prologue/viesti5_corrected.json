@@ -92,6 +92,7 @@
     {
       "scene_id": "7_sokolov_departure",
       "name": "Scene 7: Moskovan Juna-aseman Laiturit",
+      "image": "images/prologue/scene_7.png",
       "color_palette": {
         "primary": "#3a3a4a",
         "secondary": "#7a7a8a",
