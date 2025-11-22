@@ -270,6 +270,41 @@ main {
   font-style: italic;
 }
 
+/* Continue Options */
+.continue-options {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+.continue-hint {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.continue-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.continue-buttons .choice-button {
+  flex: 1;
+  justify-content: center;
+  padding: 1.2rem;
+  font-size: 1.05rem;
+}
+
+.continue-buttons .choice-button .choice-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 /* Loading */
 .loading {
   text-align: center;
