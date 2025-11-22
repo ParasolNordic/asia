@@ -73,6 +73,9 @@ class GameEngine {
         console.log('ℹ️ AI dialogues disabled (AI_PROXY_ENABLED = false)');
       }
 
+      // Alusta keyboard navigation
+      this.initKeyboardNavigation();
+
       this.isInitialized = true;
       console.log('✅ Game engine initialized');
 
@@ -81,6 +84,56 @@ class GameEngine {
       console.error('❌ Initialization failed:', error);
       throw error;
     }
+  }
+
+  /**
+   * Alusta näppäimistöohjaus
+   */
+  initKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+      // Älä käsittele jos kirjoitetaan tekstikenttään
+      if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') {
+        return;
+      }
+
+      const state = this.stateMachine.getCurrentState();
+      const history = this.stateMachine.getHistory();
+
+      // ArrowRight / ArrowLeft - Scene navigation
+      if (e.key === 'ArrowRight' && state.type === 'scene') {
+        e.preventDefault();
+        // Siirry eteenpäin automaattisesti (käytä ensimmäistä valintaa)
+        if (state.choices && state.choices.length > 0) {
+          this.handleChoice(state.scene_id, state.choices[0].id);
+        }
+      } else if (e.key === 'ArrowLeft' && history.length > 0) {
+        e.preventDefault();
+        this.navigateBack();
+      }
+    });
+
+    console.log('⌨️ Keyboard navigation initialized (← →)');
+  }
+
+  /**
+   * Siirry takaisin edelliseen tilaan
+   */
+  navigateBack() {
+    const history = this.stateMachine.getHistory();
+    if (history.length === 0) {
+      console.log('⚠️ Cannot go back - at start');
+      return;
+    }
+
+    // Poista viimeisin siirtymä
+    const lastTransition = history.pop();
+    console.log(`⬅️ Going back: ${lastTransition.to} → ${lastTransition.from}`);
+
+    // Aseta tilakone takaisin
+    this.stateMachine.currentState = lastTransition.from;
+    
+    // Renderöi uudelleen
+    this.processCurrentState();
   }
 
   /**
