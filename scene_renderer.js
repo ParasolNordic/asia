@@ -22,8 +22,19 @@ class SceneRenderer {
       return;
     }
 
+    // Rakenna HTML kuvalla (jos on)
+    let html = '';
+    
+    if (scene.image) {
+      html += `<div class="scene-image-container">
+        <img src="${scene.image}" alt="${scene.name}" class="scene-image" />
+      </div>`;
+    }
+    
+    html += scene.html;
+    
     // Renderöi HTML
-    this.container.innerHTML = scene.html;
+    this.container.innerHTML = html;
 
     // Aseta värit
     if (scene.color_palette) {
