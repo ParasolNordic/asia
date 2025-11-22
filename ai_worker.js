@@ -1,291 +1,227 @@
 /**
- * AI Worker - NPC Dialogue Management
- * 
- * Hallinnoi NPC-dialogeja ja soveltaa AI-analyysien perusteella
- * diplomatiavaikutuksia pelitilaan.
+ * AI Worker - Simplified & Safe Version
+ * Käsittelee AI-dialogit ilman kaatumista
  */
 
-import AIClient from './ai_client.js';
-
 class AIWorker {
-  constructor(gameData, aiConfig = {}) {
-    this.npcs = gameData.npcs; // npcs.json
-    this.diplomacyRules = gameData.npcRules; // npc_diplomacy_rules.json
-    this.currentModuleDiplomacy = gameData.moduleDiplomacy; // esim. viesti2_corrected.json
-    this.aiProfiles = gameData.aiProfiles; // esim. viesti4.json
-    
-    this.aiClient = new AIClient(aiConfig);
-    
-    // Cache NPC-profiileja
+  constructor(gameData, config = {}) {
+    this.npcs = gameData.npcs;
+    this.npcRules = gameData.npcRules;
+    this.moduleDiplomacy = gameData.moduleDiplomacy;
+    this.aiProfiles = gameData.aiProfiles;
+    this.proxyURL = config.proxyURL || 'https://ai-proxy.arkisto-kaksi.workers.dev';
     this.npcCache = new Map();
+    
+    console.log('🤖 AIWorker initialized');
   }
 
   /**
-   * Käynnistää AI-dialogin NPC:n kanssa
-   * 
-   * @param {string} npcId - NPC:n ID
-   * @param {string} sceneId - Nykyinen scene
-   * @param {string} playerText - Pelaajan vapaa teksti
-   * @param {Object} gameState - Pelitila
-   * @returns {Promise<Object>} - { npcResponse, diplomacyEffects }
-   */
-  async startDialogue(npcId, sceneId, playerText, gameState) {
-    // 1. Hae NPC:n täysi profiili
-    const npcProfile = this.getNPCProfile(npcId);
-    
-    // 2. Validoi että NPC on sallittu tässä scenessä
-    if (!this.isNPCAllowedInScene(npcId, sceneId)) {
-      throw new Error(`NPC ${npcId} is not available in scene ${sceneId}`);
-    }
-    
-    // 3. Kutsu AI:ta analysoimaan dialogi
-    const aiResult = await this.aiClient.analyzeDialogue(
-      npcId,
-      npcProfile,
-      playerText,
-      gameState
-    );
-    
-    // 4. Sovella diplomatiavaikutukset
-    const diplomacyEffects = this.calculateDiplomacyEffects(
-      npcId,
-      sceneId,
-      aiResult.analysis,
-      gameState
-    );
-    
-    // 5. Tarkista fallback-säännöt
-    this.applyFallbackProtections(npcId, diplomacyEffects, gameState);
-    
-    return {
-      npcResponse: aiResult.response,
-      analysis: aiResult.analysis,
-      diplomacyEffects: diplomacyEffects,
-      npcProfile: {
-        id: npcId,
-        name: npcProfile.name
-      }
-    };
-  }
-
-  /**
-   * Hakee NPC:n täyden profiilin (yhdistää npcs.json + viesti4.json)
+   * Hakee NPC:n profiilin TURVALLISESTI
    */
   getNPCProfile(npcId) {
-    // Tarkista cache
+    // Cache
     if (this.npcCache.has(npcId)) {
       return this.npcCache.get(npcId);
     }
     
-    // Tarkista että data on olemassa
-    if (!this.npcs) {
-      throw new Error('NPC data not loaded');
-    }
-    
-    // npcs.json voi olla joko { npcs: [...] } tai suoraan [...]
-    const npcList = this.npcs.npcs || this.npcs;
-    
-    if (!Array.isArray(npcList)) {
-      throw new Error('NPC data is not in correct format');
-    }
-    
-    // Hae perusprofiili npcs.json:sta
-    const baseProfile = npcList.find(n => n.id === npcId);
-    if (!baseProfile) {
-      throw new Error(`NPC ${npcId} not found in npcs.json`);
-    }
-    
-    // Hae AI Worker -profiili viesti4.json:sta (jos on)
-    let aiProfile = null;
-    if (this.aiProfiles) {
-      const aiProfileList = this.aiProfiles.npcs || this.aiProfiles;
-      if (Array.isArray(aiProfileList)) {
-        aiProfile = aiProfileList.find(n => n.id === npcId);
-      }
-    }
-    
-    // Yhdistä profiilit
-    const fullProfile = {
-      ...baseProfile,
-      ...(aiProfile || {}),
-      // AI profile overridaa base profiilin
-      persona: aiProfile?.persona || baseProfile.persona,
-      alignment_behavior: aiProfile?.alignment_behavior || baseProfile.alignment_behavior,
-      dialogue_output_rules: aiProfile?.dialogue_output_rules || baseProfile.dialogue_output_rules
+    // Yksinkertainen fallback-profiili jos data puuttuu
+    const fallbackProfile = {
+      id: npcId,
+      name: this.getNPCName(npcId),
+      personality: 'formal, diplomatic',
+      goals: ['complete mission'],
+      background: 'Russian official'
     };
     
-    // Tallenna cacheen
-    this.npcCache.set(npcId, fullProfile);
-    
-    return fullProfile;
-  }
-
-  /**
-   * Tarkistaa onko NPC sallittu tässä scenessä
-   */
-  isNPCAllowedInScene(npcId, sceneId) {
-    const aiProfile = this.aiProfiles.npcs.find(n => n.id === npcId);
-    if (!aiProfile) return false;
-    
-    return aiProfile.scene_scope.includes(sceneId);
-  }
-
-  /**
-   * Laskee diplomatiavaikutukset AI-analyysin perusteella
-   * 
-   * Käyttää viesti2.json:n ai_dialogue.effects_mapping -sääntöjä
-   */
-  calculateDiplomacyEffects(npcId, sceneId, analysis, gameState) {
-    // Hae scenen AI-dialogin säännöt
-    const scene = this.currentModuleDiplomacy.acts.find(a => a.scene === sceneId);
-    if (!scene || !scene.ai_dialogue) {
-      console.warn(`No AI dialogue rules for scene ${sceneId}`);
-      return this.getDefaultEffects();
-    }
-    
-    const mappings = scene.ai_dialogue.effects_mapping;
-    
-    // Etsi matching mapping
-    for (const mapping of mappings) {
-      if (this.matchesCondition(mapping.condition, analysis)) {
-        return {
-          factions: mapping.effects.factions || {},
-          player_traits: mapping.effects.player_traits || {},
-          npc_opinions: mapping.effects.npc_opinions || {},
-          flags: mapping.effects.flags || {}
-        };
-      }
-    }
-    
-    // Fallback: neutraali vaikutus
-    return this.getDefaultEffects();
-  }
-
-  /**
-   * Tarkistaa vastaako analyysi ehtoa
-   */
-  matchesCondition(condition, analysis) {
-    for (const [key, expectedValues] of Object.entries(condition)) {
-      const actualValue = analysis[key];
-      
-      if (Array.isArray(expectedValues)) {
-        // Tarkista onko actualValue jossain expectedValues-listassa
-        const matches = expectedValues.some(expected => {
-          if (Array.isArray(actualValue)) {
-            return actualValue.some(v => v === expected);
-          }
-          return actualValue === expected;
-        });
-        
-        if (!matches) return false;
-      } else {
-        if (actualValue !== expectedValues) return false;
-      }
-    }
-    
-    return true;
-  }
-
-  /**
-   * Soveltaa fallback-suojauksia (ei hard lockeja)
-   */
-  applyFallbackProtections(npcId, effects, gameState) {
-    const npcRules = this.diplomacyRules.npc_rules[npcId];
-    if (!npcRules) return;
-    
-    // Laske ennustettu NPC opinion
-    const currentOpinion = gameState.npc_opinions[npcId] || 0;
-    const opinionDelta = effects.npc_opinions[npcId] || 0;
-    const predictedOpinion = currentOpinion + opinionDelta;
-    
-    // Jos opinion menisi liian alas, sovella fallback-sääntöä
-    const softLockThreshold = -40;
-    const hardLockThreshold = -80;
-    
-    if (predictedOpinion < softLockThreshold) {
-      console.warn(`NPC ${npcId} opinion approaching soft lock (${predictedOpinion})`);
-      
-      if (npcRules.fallback_rule) {
-        console.log(`Fallback rule: ${npcRules.fallback_rule}`);
-      }
-      
-      // Lievennä rangaistusta hieman
-      if (effects.npc_opinions[npcId] < 0) {
-        effects.npc_opinions[npcId] = Math.max(effects.npc_opinions[npcId], -3);
-        console.log(`Opinion penalty softened to ${effects.npc_opinions[npcId]}`);
-      }
-    }
-    
-    if (predictedOpinion < hardLockThreshold) {
-      console.error(`CRITICAL: NPC ${npcId} opinion at hard lock threshold!`);
-      // Aktivoi hätäprotokolla: neutraloi kaikki negatiiviset vaikutukset
-      if (effects.npc_opinions[npcId] < 0) {
-        effects.npc_opinions[npcId] = 0;
-      }
-    }
-  }
-
-  /**
-   * Palauttaa oletusarvoiset (neutraalit) vaikutukset
-   */
-  getDefaultEffects() {
-    return {
-      factions: {},
-      player_traits: {},
-      npc_opinions: {},
-      flags: {}
-    };
-  }
-
-  /**
-   * Testaa AI Worker -toiminnallisuutta
-   */
-  async test() {
-    console.log('Testing AI Worker...');
-    
-    // 1. Testaa AI Client
-    const connectionOk = await this.aiClient.testConnection();
-    if (!connectionOk) {
-      console.error('AI Client connection failed');
-      return false;
-    }
-    
-    // 2. Testaa NPC-profiilin lataus
     try {
-      const trepovProfile = this.getNPCProfile('trepov');
-      console.log('Trepov profile loaded:', trepovProfile.name);
-    } catch (error) {
-      console.error('Failed to load NPC profile:', error);
-      return false;
-    }
-    
-    // 3. Testaa mock-dialogi
-    try {
-      const mockGameState = {
-        factions: { RUS: 5, BRIT: 0 },
-        player_traits: { INDEPENDENCE: 2, NEUTRALITY: 1 },
-        npc_opinions: { trepov: 0 }
+      // Yritä hakea oikea profiili
+      let baseProfile = null;
+      
+      // npcs voi olla { npcs: [...] } TAI suoraan array
+      if (this.npcs) {
+        const npcList = Array.isArray(this.npcs) ? this.npcs : (this.npcs.npcs || []);
+        baseProfile = npcList.find(n => n && n.id === npcId);
+      }
+      
+      // AI profile viesti4.json:sta
+      let aiProfile = null;
+      if (this.aiProfiles) {
+        const aiList = Array.isArray(this.aiProfiles) ? this.aiProfiles : (this.aiProfiles.npcs || []);
+        aiProfile = aiList.find(n => n && n.id === npcId);
+      }
+      
+      // Yhdistä tai käytä fallbackia
+      const profile = {
+        ...fallbackProfile,
+        ...(baseProfile || {}),
+        ...(aiProfile || {})
       };
       
-      const result = await this.startDialogue(
-        'trepov',
-        '2_trepov_meeting',
-        'Olen valmis palvelemaan keisaria.',
-        mockGameState
-      );
-      
-      console.log('Test dialogue successful:', {
-        response: result.npcResponse.substring(0, 50) + '...',
-        effects: result.diplomacyEffects
-      });
+      this.npcCache.set(npcId, profile);
+      return profile;
       
     } catch (error) {
-      console.error('Test dialogue failed:', error);
-      return false;
+      console.warn(`⚠️ Could not load full profile for ${npcId}, using fallback:`, error);
+      this.npcCache.set(npcId, fallbackProfile);
+      return fallbackProfile;
+    }
+  }
+
+  /**
+   * Palauttaa NPC:n nimen ID:n perusteella
+   */
+  getNPCName(npcId) {
+    const names = {
+      'trepov': 'Dmitri Trepov',
+      'kf': 'K.F.',
+      'samsonov': 'Samsonov',
+      'sokolov': 'Sokolov'
+    };
+    return names[npcId] || npcId.toUpperCase();
+  }
+
+  /**
+   * Aloita dialogi NPC:n kanssa
+   */
+  async startDialogue(npcId, sceneId, playerText, gameState) {
+    console.log(`💬 Starting dialogue with ${npcId}`);
+    
+    try {
+      const npcProfile = this.getNPCProfile(npcId);
+      
+      // Rakenna prompt
+      const systemPrompt = this.buildSystemPrompt(npcProfile, sceneId, gameState);
+      const messages = [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: playerText }
+      ];
+      
+      // Kutsu AI:ta
+      const response = await fetch(this.proxyURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: messages,
+          max_tokens: 150
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error(`AI request failed: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      const npcResponse = data.content?.[0]?.text || 'Anteeksi, en voi vastata juuri nyt.';
+      
+      // Analysoi diplomatiavaikutukset
+      const analysis = this.analyzePlayerResponse(playerText, npcProfile);
+      const diplomacyEffects = this.calculateDiplomacyEffects(npcId, sceneId, analysis);
+      
+      console.log('✅ AI dialogue completed');
+      
+      return {
+        npcProfile,
+        npcResponse,
+        analysis,
+        diplomacyEffects
+      };
+      
+    } catch (error) {
+      console.error('❌ AI dialogue error:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Rakenna system prompt NPC:lle
+   */
+  buildSystemPrompt(npcProfile, sceneId, gameState) {
+    const prompt = `You are ${npcProfile.name}, a character in a historical game set in 1906.
+
+PERSONALITY: ${npcProfile.personality || 'formal, diplomatic'}
+BACKGROUND: ${npcProfile.background || 'Russian official'}
+GOALS: ${(npcProfile.goals || ['complete mission']).join(', ')}
+
+IMPORTANT RULES:
+1. Stay in character as ${npcProfile.name}
+2. Respond in Finnish (suomi)
+3. Keep response under 100 words
+4. Be historically appropriate (1906 Russia/Central Asia)
+5. Reference the player's statement directly
+
+The player is Mannerheim, a Russian officer on a secret mission to Central Asia.
+
+Current situation: Scene ${sceneId}
+
+Respond naturally and in character.`;
+
+    return prompt;
+  }
+
+  /**
+   * Analysoi pelaajan vastaus
+   */
+  analyzePlayerResponse(playerText, npcProfile) {
+    const lowerText = playerText.toLowerCase();
+    
+    // Yksinkertainen sentiment-analyysi
+    const analysis = {
+      tone: 'neutral',
+      themes: [],
+      sentiment: 'neutral'
+    };
+    
+    // Avainsana-analyysi
+    if (lowerText.match(/velvollisuus|käsky|palvelen|totelen/)) {
+      analysis.tone = 'loyal';
+      analysis.themes.push('duty');
+      analysis.sentiment = 'positive';
+    } else if (lowerText.match(/epäilen|huolestun|riski|vaara/)) {
+      analysis.tone = 'concerned';
+      analysis.themes.push('caution');
+      analysis.sentiment = 'neutral';
+    } else if (lowerText.match(/kieltäy|en voi|vastustan/)) {
+      analysis.tone = 'defiant';
+      analysis.themes.push('resistance');
+      analysis.sentiment = 'negative';
+    } else if (lowerText.match(/ymmärrän|selvä|hyvä/)) {
+      analysis.tone = 'cooperative';
+      analysis.themes.push('agreement');
+      analysis.sentiment = 'positive';
     }
     
-    console.log('✓ AI Worker test passed');
-    return true;
+    return analysis;
+  }
+
+  /**
+   * Laske diplomatiavaikutukset
+   */
+  calculateDiplomacyEffects(npcId, sceneId, analysis) {
+    const effects = {
+      factions: {},
+      npc_opinions: {},
+      player_traits: {}
+    };
+    
+    // Yksinkertainen logiikka
+    const opinionChange = {
+      'positive': 5,
+      'neutral': 0,
+      'negative': -5
+    };
+    
+    effects.npc_opinions[npcId] = opinionChange[analysis.sentiment] || 0;
+    
+    // Tone-based faction changes
+    if (analysis.tone === 'loyal') {
+      effects.factions.RUS = 3;
+    } else if (analysis.tone === 'defiant') {
+      effects.player_traits.INDEPENDENCE = 3;
+    } else if (analysis.tone === 'concerned') {
+      effects.player_traits.NEUTRALITY = 2;
+    }
+    
+    return effects;
   }
 }
 
