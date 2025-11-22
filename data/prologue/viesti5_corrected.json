@@ -13,7 +13,7 @@
     {
       "scene_id": "1_pietarin_talvisumu",
       "name": "Pietarin talvisumu",
-      "image": "prologi1.jpg",
+      "image": "images/prologue/scene_1.png",
       "html": "<div class='scene prologue-scene' id='scene_1_pietarin_talvisumu'>\n  <h1>Pietari, talvi 1906</h1>\n  <p>Lumisumu leijuu Nevajoen yllä. Raitiovaunut kolisevat ja sotilaat välttelevät toistensa katseita.</p>\n  <p>Lehtipoika huutaa: <em>\"Mukdenin tappio — keisarikunta horjuu!\"</em></p>\n  <p>Mannerheim pysähtyy sillalle. On kylmä, ja kaupunki tuntuu raskaalta kuin ennen myrskyä.</p>\n</div>",
       "ambient": {
         "weather": "snow_fog",
