@@ -142,6 +142,14 @@ class SceneRenderer {
    * Näytä NPC:n vastaus
    */
   showNPCResponse(npcName, response) {
+    // Tarkista että response on kunnollinen
+    if (!response || response === 'undefined') {
+      console.error('⚠️ Invalid NPC response:', response);
+      response = 'Anteeksi, en voi vastata juuri nyt.';
+    }
+    
+    console.log('💬 Showing NPC response:', npcName, response);
+    
     const responseHTML = `
       <div class="npc-response">
         <h4>${npcName}:</h4>
