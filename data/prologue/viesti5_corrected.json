@@ -31,7 +31,7 @@
     {
       "scene_id": "2_trepov_meeting",
       "name": "Trepovin tapaaminen",
-      "image": "prologi2.jpg",
+      "image": "images/prologue/scene_1.png",
       "html": "<div class='scene prologue-scene' id='scene_2_trepov_meeting'>\n  <h1>Sisäministeriön rakennus</h1>\n  <p>Vihreät samettipaneloinnit ja raskaat ovet sulkeutuvat takanasi. Trepov seisoo ikkunan ääressä, kädet selän takana.</p>\n  <p>Ilmassa leijuu tupakkaa ja vallan tuntu on lähes fyysinen.</p>\n  <p class='npc-intro'>Dmitri Trepov, sisäministeriön virkamies, kääntyy hitaasti. Hänen katseensa on kylmä ja arvioiva.</p>\n</div>",
       "ambient": {
         "lighting": "dim, dark_green_tint",
