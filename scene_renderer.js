@@ -72,7 +72,14 @@ class SceneRenderer {
       </button>
     `).join('');
 
-    this.choicesContainer.innerHTML = html;
+    // Lisää navigation hint
+    const navigationHint = `
+      <div class="navigation-hint">
+        ⌨️ Nuolinäppäimet: ← Takaisin | → Eteenpäin | 1-${choices.length} Valitse
+      </div>
+    `;
+
+    this.choicesContainer.innerHTML = html + navigationHint;
 
     // Lisää event listenerit
     const buttons = this.choicesContainer.querySelectorAll('.choice-button');
