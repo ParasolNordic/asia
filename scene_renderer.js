@@ -168,6 +168,45 @@ class SceneRenderer {
   }
 
   /**
+   * Näytä jatko-vaihtoehdot (jatka keskustelua tai siirry eteenpäin)
+   */
+  showContinueOptions(onContinueCallback, onEndCallback) {
+    const html = `
+      <div class="continue-options">
+        <p class="continue-hint">💬 Voit jatkaa keskustelua tai siirtyä eteenpäin</p>
+        <div class="continue-buttons">
+          <button id="continue-dialogue" class="choice-button primary">
+            <span class="choice-text">🔄 Jatka keskustelua</span>
+          </button>
+          <button id="end-dialogue" class="choice-button secondary">
+            <span class="choice-text">➡️ Siirry eteenpäin</span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    this.choicesContainer.innerHTML = html;
+
+    // Event listenerit
+    document.getElementById('continue-dialogue').addEventListener('click', () => {
+      onContinueCallback();
+    });
+
+    document.getElementById('end-dialogue').addEventListener('click', () => {
+      onEndCallback();
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'c' || e.key === 'C') {
+        onContinueCallback();
+      } else if (e.key === 'Enter') {
+        onEndCallback();
+      }
+    }, { once: true });
+  }
+
+  /**
    * Näytä virhe
    */
   showError(message) {
