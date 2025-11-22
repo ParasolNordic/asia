@@ -65,7 +65,7 @@
     {
       "scene_id": "4_samsonov_officersclub",
       "name": "Upseerikerho — Samsonov",
-      "image": "images/prologue/scene_4.png",
+      "image": "images/prologue/scene_4.jpg",
       "html": "<div class='scene prologue-scene' id='scene_4_samsonov_officersclub'>\n  <h1>Pietarin upseerikerho</h1>\n  <p>Savukkeenkatku, tumma puu ja vanhat rintamakuvat täyttävät huoneen. Samsonov juo teetä ja näyttää väsyneeltä mutta valppaana.</p>\n  <p>Ilmassa on sodan jälkimaun katkeruus.</p>\n  <p class='npc-intro'>Kenraali Aleksandr Samsonov, rajavyöhykkeen veteraani, tarjoaa istuimen mutta ei hymyile.</p>\n</div>",
       "ambient": {
         "lighting": "golden_lamp, shadowy_corners",
