@@ -58,6 +58,12 @@ main {
   padding: 0 2rem;
 }
 
+.game-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 @media (max-width: 1024px) {
   main {
     grid-template-columns: 1fr;
