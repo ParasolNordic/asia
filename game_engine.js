@@ -196,13 +196,20 @@ class GameEngine {
     // Renderöi scene
     this.renderer.renderScene(state.scene_id);
 
-    // Jos ei valintoja (esim. Scene 6), siirry automaattisesti
+    // Jos ei valintoja, tarkista onko automaattinen siirtymä
     if (!state.choices || state.choices.length === 0) {
-      setTimeout(() => {
-        this.stateMachine.transition();
-        this.processCurrentState();
-      }, 2000);
-      return;
+      // Jos on transitions (automaattinen siirtymä), näytä scene 3 sekuntia
+      if (state.transitions && state.transitions.length > 0) {
+        console.log('ℹ️ Auto-transition scene, showing for 3 seconds...');
+        
+        // Näytä "Jatka" -nappi
+        this.renderer.showContinueButton(() => {
+          this.stateMachine.transition();
+          this.processCurrentState();
+        });
+        
+        return;
+      }
     }
 
     // Renderöi valinnat
