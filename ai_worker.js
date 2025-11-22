@@ -107,11 +107,19 @@ class AIWorker {
       });
       
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('❌ AI request failed:', response.status, errorText);
         throw new Error(`AI request failed: ${response.status}`);
       }
       
       const data = await response.json();
+      console.log('📦 Raw AI response:', data);
+      console.log('📝 Content array:', data.content);
+      console.log('📄 First content:', data.content?.[0]);
+      console.log('✍️ Text:', data.content?.[0]?.text);
+      
       const npcResponse = data.content?.[0]?.text || 'Anteeksi, en voi vastata juuri nyt.';
+      console.log('💬 Final NPC response:', npcResponse);
       
       // Analysoi diplomatiavaikutukset
       const analysis = this.analyzePlayerResponse(playerText, npcProfile);
