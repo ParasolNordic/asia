@@ -3,6 +3,7 @@
     {
       "scene_id": "1_pietarin_talvisumu",
       "name": "Scene 1: Pietarin Talvisumu",
+      "image": "images/prologue/scene_1.png",
       "color_palette": {
         "primary": "#3d4f5c",
         "secondary": "#8b9da9",
@@ -17,6 +18,7 @@
     {
       "scene_id": "2_trepov_meeting",
       "name": "Scene 2: Trepovin Tapaaminen",
+      "image": "images/prologue/scene_2.png",
       "color_palette": {
         "primary": "#4a2c2a",
         "secondary": "#8b6f47",
@@ -45,6 +47,7 @@
     {
       "scene_id": "4_samsonov_officersclub",
       "name": "Scene 4: Upseerikerho — Samsonov",
+      "image": "images/prologue/scene_4.jpg",
       "color_palette": {
         "primary": "#5a3a2a",
         "secondary": "#9a7a6a",
@@ -59,6 +62,7 @@
     {
       "scene_id": "5_personal_crisis",
       "name": "Scene 5: Mannerheimin Henkilökohtainen Kriisi",
+      "image": "images/prologue/scene_5.png",
       "color_palette": {
         "primary": "#4a4a5a",
         "secondary": "#8a8a9a",
@@ -72,7 +76,8 @@
     },
     {
       "scene_id": "6_final_briefing_trepov_kf",
-      "name": "Scene 6: Loppubriiffi — Karttahuone",
+      "name": "Scene 6: Loppubrieffi — Karttahuone",
+      "image": "images/prologue/scene_6.png",
       "color_palette": {
         "primary": "#3a2a2a",
         "secondary": "#7a6a6a",
