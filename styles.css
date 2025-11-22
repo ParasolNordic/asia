@@ -303,6 +303,22 @@ main {
 }
 
 /* Continue Options */
+.continue-single {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.continue-single .choice-button {
+  display: inline-flex;
+  min-width: 300px;
+  font-size: 1.2rem;
+  padding: 1.5rem 2rem;
+}
+
+.continue-single .navigation-hint {
+  margin-top: 1rem;
+}
+
 .continue-options {
   background: white;
   padding: 2rem;
