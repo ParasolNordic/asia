@@ -230,11 +230,14 @@ class GameEngine {
       // Sovella diplomatiavaikutukset
       this.diplomacy.applyEffects(result.diplomacyEffects);
 
-      // Jatka
-      setTimeout(() => {
-        this.stateMachine.transition();
-        this.processCurrentState();
-      }, 3000);
+      // Päivitä debug
+      this.updateDebug();
+
+      // Näytä jatko-vaihtoehdot (jatka keskustelua tai siirry eteenpäin)
+      this.renderer.showContinueOptions(
+        () => this.continueDialogue(state, npcId),
+        () => this.endDialogue()
+      );
 
     } catch (error) {
       console.error('AI dialogue error:', error);
@@ -251,6 +254,31 @@ class GameEngine {
    */
   handleAIDialogueSkip() {
     console.log('⏭️ AI dialogue skipped');
+    this.stateMachine.transition();
+    this.processCurrentState();
+  }
+
+  /**
+   * Jatka dialogia (näytä uusi input-kenttä)
+   */
+  continueDialogue(state, npcId) {
+    console.log('🔄 Continuing dialogue with', npcId);
+    
+    const npcProfile = this.aiWorker.getNPCProfile(npcId);
+    
+    this.renderer.renderAIDialogue(
+      npcId,
+      npcProfile.name,
+      (text) => this.handleAIDialogueSubmit(state, npcId, text),
+      () => this.endDialogue()
+    );
+  }
+
+  /**
+   * Lopeta dialogi ja siirry eteenpäin
+   */
+  endDialogue() {
+    console.log('✅ Ending dialogue, moving forward');
     this.stateMachine.transition();
     this.processCurrentState();
   }
