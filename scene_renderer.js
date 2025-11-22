@@ -57,6 +57,39 @@ class SceneRenderer {
   }
 
   /**
+   * Näytä "Jatka" -nappi (sceneille joilla ei valintoja)
+   */
+  showContinueButton(onContinueCallback) {
+    const html = `
+      <div class="continue-single">
+        <button id="continue-button" class="choice-button primary large">
+          <span class="choice-text">➡️ Jatka</span>
+        </button>
+        <div class="navigation-hint">
+          ⌨️ Paina Enter tai → jatkaaksesi
+        </div>
+      </div>
+    `;
+
+    this.choicesContainer.innerHTML = html;
+
+    // Event listener
+    document.getElementById('continue-button').addEventListener('click', () => {
+      onContinueCallback();
+    });
+
+    // Keyboard: Enter tai Arrow Right
+    const keyHandler = (e) => {
+      if (e.key === 'Enter' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        onContinueCallback();
+        document.removeEventListener('keydown', keyHandler);
+      }
+    };
+    document.addEventListener('keydown', keyHandler);
+  }
+
+  /**
    * Renderöi valinnat
    */
   renderChoices(choices, onChoiceCallback) {
