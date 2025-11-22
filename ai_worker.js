@@ -77,14 +77,32 @@ class AIWorker {
       return this.npcCache.get(npcId);
     }
     
+    // Tarkista että data on olemassa
+    if (!this.npcs) {
+      throw new Error('NPC data not loaded');
+    }
+    
+    // npcs.json voi olla joko { npcs: [...] } tai suoraan [...]
+    const npcList = this.npcs.npcs || this.npcs;
+    
+    if (!Array.isArray(npcList)) {
+      throw new Error('NPC data is not in correct format');
+    }
+    
     // Hae perusprofiili npcs.json:sta
-    const baseProfile = this.npcs.npcs.find(n => n.id === npcId);
+    const baseProfile = npcList.find(n => n.id === npcId);
     if (!baseProfile) {
       throw new Error(`NPC ${npcId} not found in npcs.json`);
     }
     
     // Hae AI Worker -profiili viesti4.json:sta (jos on)
-    const aiProfile = this.aiProfiles.npcs.find(n => n.id === npcId);
+    let aiProfile = null;
+    if (this.aiProfiles) {
+      const aiProfileList = this.aiProfiles.npcs || this.aiProfiles;
+      if (Array.isArray(aiProfileList)) {
+        aiProfile = aiProfileList.find(n => n.id === npcId);
+      }
+    }
     
     // Yhdistä profiilit
     const fullProfile = {
