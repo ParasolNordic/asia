@@ -57,6 +57,60 @@ class SceneRenderer {
   }
 
   /**
+   * Näytä NPC-profiili (jos on)
+   */
+  showNPCProfile(npcProfile) {
+    const profileContainer = document.getElementById('npc-profile');
+    if (!profileContainer) return;
+
+    if (!npcProfile) {
+      profileContainer.style.display = 'none';
+      return;
+    }
+
+    const html = `
+      <div class="npc-profile-card">
+        <h3>${npcProfile.name}</h3>
+        <p class="npc-background">${npcProfile.background || 'Venäläinen virkamies'}</p>
+        ${npcProfile.personality ? `<p class="npc-personality"><em>${npcProfile.personality}</em></p>` : ''}
+      </div>
+    `;
+
+    profileContainer.innerHTML = html;
+    profileContainer.style.display = 'block';
+  }
+
+  /**
+   * Piilota NPC-profiili
+   */
+  hideNPCProfile() {
+    const profileContainer = document.getElementById('npc-profile');
+    if (profileContainer) {
+      profileContainer.style.display = 'none';
+    }
+  }
+
+  /**
+   * Näytä pelaajan viesti
+   */
+  showPlayerMessage(message) {
+    const messageHTML = `
+      <div class="player-message">
+        <h4>Mannerheim:</h4>
+        <p>${message}</p>
+      </div>
+    `;
+
+    this.container.insertAdjacentHTML('beforeend', messageHTML);
+
+    // Scroll to message
+    const messageEl = this.container.querySelector('.player-message:last-child');
+    if (messageEl) {
+      messageEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  /**
    * Näytä "Jatka" -nappi (sceneille joilla ei valintoja)
    */
   showContinueButton(onContinueCallback) {
