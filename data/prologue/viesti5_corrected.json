@@ -116,7 +116,7 @@
     {
       "scene_id": "7_sokolov_departure",
       "name": "Lähtö — Sokolov laiturilla",
-      "image": "prologi7.jpg",
+      "image": "images/prologue/scene_7.png",
       "html": "<div class='scene prologue-scene' id='scene_7_sokolov_departure'>\n  <h1>Moskovan juna-aseman laiturit</h1>\n  <p>Höyry peittää näkyvyyttä. Sokolov seisoo rivissä kasakkajoukkojen kanssa, turkisviitta harteillaan. Juna puhkuu lähtövalmiina.</p>\n  <p>Kaukana kuuluu metallin kolinaa ja hevosten hirnuntaa.</p>\n  <p class='npc-intro'>Kasakka Sergei Sokolov astuu esiin, tervehtiä ja tarjoutuu suojelijaksi matkalle.</p>\n  <p class='narrative-end'><em>Juna nytkähtää liikkeelle. Pietari jää taakse. Edessä odottaa tuntematon.</em></p>\n</div>",
       "ambient": {
         "weather": "cold_steam, early_morning_fog",
