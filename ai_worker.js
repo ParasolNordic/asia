@@ -201,20 +201,6 @@ Respond naturally and in character.`;
 
     return prompt;
   }
-1. Stay in character as ${npcProfile.name}
-2. Respond in Finnish (suomi)
-3. Keep response under 100 words
-4. Be historically appropriate (1906 Russia/Central Asia)
-5. Reference the player's statement directly
-
-The player is Mannerheim, a Russian officer on a secret mission to Central Asia.
-
-Current situation: Scene ${sceneId}
-
-Respond naturally and in character.`;
-
-    return prompt;
-  }
 
   /**
    * Analysoi pelaajan vastaus
