@@ -196,6 +196,9 @@ class GameEngine {
     // Renderöi scene
     this.renderer.renderScene(state.scene_id);
 
+    // Piilota edellinen NPC-profiili ensin
+    this.renderer.hideNPCProfile();
+
     // Tarkista onko seuraavassa tilassa AI-dialogi ja näytä NPC-profiili jo nyt
     const nextTransition = state.choices?.[0]?.next || state.transitions?.[0]?.to;
     if (nextTransition && this.aiWorker) {
