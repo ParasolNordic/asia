@@ -16,14 +16,14 @@
   <!-- Pelin container -->
   <main>
     <div class="game-content">
-      <!-- NPC Profile (näkyy vain AI-dialogin aikana) -->
-      <aside id="npc-profile" class="npc-profile" style="display: none;"></aside>
-
       <!-- Scene-alue -->
       <div id="game-container"></div>
 
       <!-- Valinnat-alue -->
       <div id="choices-container"></div>
+
+      <!-- NPC Profile (näkyy vain AI-dialogin aikana) -->
+      <aside id="npc-profile" class="npc-profile" style="display: none;"></aside>
     </div>
 
     <!-- Debug-paneeli -->
@@ -40,9 +40,9 @@
 
   <!-- AI Proxy Configuration -->
   <script>
-    // Aseta tämä true jos haluat käyttää AI-dialogeja
-    window.AI_PROXY_ENABLED = true; // Vaihda true kun Cloudflare Worker on valmis
-    window.AI_PROXY_URL = 'https://ai-proxy.arkisto-kaksi.workers.dev';
+    // AI-dialogit käytössä
+    window.AI_PROXY_ENABLED = true;
+    window.AI_PROXY_URL = 'https://ai-proxy.arkisto-kakko.workers.dev';
   </script>
 
   <!-- Main script (ES6 modules) -->
