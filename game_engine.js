@@ -196,6 +196,16 @@ class GameEngine {
     // Renderöi scene
     this.renderer.renderScene(state.scene_id);
 
+    // Tarkista onko seuraavassa tilassa AI-dialogi ja näytä NPC-profiili jo nyt
+    const nextTransition = state.choices?.[0]?.next || state.transitions?.[0]?.to;
+    if (nextTransition && this.aiWorker) {
+      const nextState = this.stateMachine.states[nextTransition];
+      if (nextState?.type === 'hub' && nextState.ai_dialogue) {
+        const npcProfile = this.aiWorker.getNPCProfile(nextState.ai_dialogue.npc_id);
+        this.renderer.showNPCProfile(npcProfile);
+      }
+    }
+
     // Jos ei valintoja, tarkista onko automaattinen siirtymä
     if (!state.choices || state.choices.length === 0) {
       // Jos on transitions (automaattinen siirtymä), näytä scene 3 sekuntia
