@@ -13,11 +13,11 @@
         "mood": "cold, melancholic, foreboding",
         "sound": ["distant_tram", "river_ice_cracking", "wind_howling"]
       },
-      "html": "<div class=\"scene\"><h1>Pietarin Talvisumu</h1><p class=\"narrative\">Nevajoen yllä leijuu lumisumu. Raitiovaunut kolisevat kylmässä ilmassa. Sotilaat välttelevät toistensa katseita kadulla.</p><p class=\"narrative\">Lehtipoika huutaa: <em>\"Mukdenin tappio — keisarikunta horjuu!\"</em></p><div class=\"internal-monologue\"><p><em>\"Venäjä ei ole entisensä. Ja silti he kutsuvat minut tänne, jälleen.\"</em></p></div></div>"
+      "html": "<div class=\"scene\"><h1>Pietarin talviaamu</h1><p class=\"narrative\">Nevajoen yllä leijuu lumisumu. Raitiovaunut kolisevat kylmässä ilmassa. Sotilaat välttelevät toistensa katseita kadulla.</p><p class=\"narrative\">Lehtipoika huutaa: <em>\"Mukdenin tappio Japanin sodassa — keisarikunta horjuu!\"</em></p><div class=\"internal-monologue\"><p><em>\"Venäjä ei ole entisensä. Ja silti he kutsuvat minut tänne, jälleen.\"</em></p></div></div>"
     },
     {
       "scene_id": "2_trepov_meeting",
-      "name": "Scene 2: Trepovin Tapaaminen",
+      "name": "Scene 2: Trepovin tapaaminen",
       "image": "images/prologue/scene_2.png",
       "color_palette": {
         "primary": "#4a2c2a",
@@ -28,11 +28,11 @@
         "mood": "authoritarian, intimidating, oppressive",
         "sound": ["muffled_steps", "pen_scratching", "distant_clock"]
       },
-      "html": "<div class=\"scene\"><h1>Trepovin Tapaaminen</h1><p class=\"narrative\">Sisäministeriön raskaat ovet sulkeutuvat pelaajan takana. Huone on pimeä, vain työpöydän lamppu valaisee.</p><div class=\"npc-intro\"><p><strong>Dmitri Trepov</strong> (sisäministeri):</p><p>\"Eversti Mannerheim. Venäjä ei voi sallia toista nöyryytystä idässä. Kiina on murenemassa — ja me tarvitsemme tietoa.\"</p><p>\"Te liitytte Ranskan retkikuntaan peitteenä. Mutta todellinen tehtävänne on arvioida Kiinan sotilaallista tilaa ja raportoida suoraan minulle.\"</p></div></div>"
+      "html": "<div class=\"scene\"><h1>Kenraaliluutnantti Trepovin tapaaminen</h1><p class=\"narrative\">Sisäministeriön raskaat ovet sulkeutuvat takana. Huone on pimeä, vain työpöydän lamppu valaisee.</p><div class=\"npc-intro\"><p><strong>Dmitri Trepov</strong> (sisäministeri):</p><p>\"Eversti Mannerheim. Venäjä ei voi sallia toista nöyryytystä idässä. Kiina on murenemassa — ja me tarvitsemme tietoa.\"</p><p>\"Te liitytte Ranskan retkikuntaan peitteenä. Mutta todellinen tehtävänne on arvioida Kiinan sotilaallista tilaa ja raportoida suoraan minulle.\"</p></div></div>"
     },
     {
       "scene_id": "3_kf_briefing",
-      "name": "Scene 3: K.F.:n Salainen Brieffi",
+      "name": "Scene 3: K.F.:n salainen brief",
       "image": "images/prologue/scene_3.jpg",
       "color_palette": {
         "primary": "#3a4a3a",
@@ -43,7 +43,7 @@
         "mood": "formal, analytical, clinical",
         "sound": ["paper_rustle", "clock_tick", "pen_on_map"]
       },
-      "html": "<div class=\"scene\"><h1>K.F.:n Salainen Brieffi</h1><p class=\"narrative\">Esikuntapäällikkö K.F. ei katso ylös papereistaan ennen kuin olet aivan edessä. Hänen pöytänsä on täynnä karttoja ja raportteja.</p><div class=\"npc-intro\"><p><strong>K.F.</strong> (esikuntapäällikkö):</p><p>\"Eversti. Tehtävä on kaksihaarainen. Julkinen — ja todellinen.\"</p><p>\"Liitytte Ranskan Pelliot'n retkikuntaan peitteenä. Mutta todellisuudessa arvioitte Kiinan sotilaallisen tilan ja raportitte suoraan keisarille.\"</p><p>\"Xinjiangin ja Gansun alueet ovat epävakaita. Britannian vaikutus kasvaa. Meidän on tiedettävä totuus.\"</p></div></div>"
+      "html": "<div class=\"scene\"><h1>K.F.:n salainen ohjeistus</h1><p class=\"narrative\">Esikuntapäällikkö K.F. ei katso ylös papereistaan ennen kuin olet aivan edessä. Hänen pöytänsä on täynnä karttoja ja raportteja.</p><div class=\"npc-intro\"><p><strong>K.F.</strong> (esikuntapäällikkö):</p><p>\"Eversti. Tehtävä on kaksihaarainen. Julkinen — ja todellinen.\"</p><p>\"Liitytte Ranskan Pelliot'n retkikuntaan peitteenä. Mutta todellisuudessa arvioitte Kiinan sotilaallisen tilan ja raportitte suoraan keisarille.\"</p><p>\"Xinjiangin ja Gansun alueet ovat epävakaita. Britannian vaikutus kasvaa. Meidän on tiedettävä totuus.\"</p></div></div>"
     },
     {
       "scene_id": "4_samsonov_officersclub",
@@ -62,7 +62,7 @@
     },
     {
       "scene_id": "5_personal_crisis",
-      "name": "Scene 5: Mannerheimin Henkilökohtainen Kriisi",
+      "name": "Scene 5: Mannerheimin vaikea henkilökohtainen tilanne",
       "image": "images/prologue/scene_5.png",
       "color_palette": {
         "primary": "#4a4a5a",
@@ -73,11 +73,11 @@
         "mood": "introspective, lonely, melancholic",
         "sound": ["silence", "distant_footsteps", "window_creak"]
       },
-      "html": "<div class=\"scene\"><h1>Henkilökohtainen Kriisi</h1><p class=\"narrative\">Yksinäinen huone. Palvelija pakkaa hiljaa matkatavaroita. Ikkunasta näkyy harmaa Pietarin taivas.</p><div class=\"internal-monologue\"><p><em>\"Pietari ei kaipaa minua.\"</em></p><p><em>\"Anastasia ei kaipaa minua.\"</em></p><p><em>\"Lapset eivät tunne minua.\"</em></p><p><em>\"Mutta ehkä tämä matka kaipaa minua. Ehkä siellä, tuolla kaukana, on jotain merkityksellistä.\"</em></p><p><em>\"Velvollisuus. Kunnia. Vai pako?\"</em></p></div></div>"
+      "html": "<div class=\"scene\"><h1>Henkilökohtaiset vaikeudet</h1><p class=\"narrative\">Yksinäinen huone. Palvelija pakkaa hiljaa matkatavaroita. Ikkunasta näkyy harmaa Pietarin taivas.</p><div class=\"internal-monologue\"><p><em>\"Pietari ei kaipaa minua.\"</em></p><p><em>\"Anastasia ei kaipaa minua.\"</em></p><p><em>\"Mutta ehkä tämä matka kaipaa minua. Ehkä siellä, tuolla kaukana, on jotain merkityksellistä.\"</em></p><p><em>\"Velvollisuus. Kunnia. Vai pako?\"</em></p></div></div>"
     },
     {
       "scene_id": "6_final_briefing_trepov_kf",
-      "name": "Scene 6: Loppubrieffi — Karttahuone",
+      "name": "Scene 6: Viimeinen voitelu — karttahuone",
       "image": "images/prologue/scene_6.png",
       "color_palette": {
         "primary": "#3a2a2a",
@@ -88,11 +88,11 @@
         "mood": "decisive, tense, final",
         "sound": ["map_rustle", "boots_on_floor", "clock_chime"]
       },
-      "html": "<div class=\"scene\"><h1>Loppubrieffi — Karttahuone</h1><p class=\"narrative\">Iso kartta Gansusta ja Xinjiangista levittäytyy pöydälle. Reitit on merkitty punaisella. Trepov ja K.F. seisovat kartan molemmin puolin.</p><div class=\"npc-intro\"><p><strong>Trepov</strong>:</p><p>\"Kiinan lohikäärme nukkuu, Mannerheim. Mutta jos se herää, maailma muuttuu. Venäjä ei saa jäädä jalkoihin.\"</p></div><div class=\"npc-intro\"><p><strong>K.F.</strong>:</p><p>\"Tehtävänne on selvä. Arvioikaa Kiinan sotilaalliset voimavarat. Kartoittakaa reitit. Tunnistakaa liittolaiset ja viholliset.\"</p><p>\"Te esitätte raporttinne keisarille itselleen — jos elätte siihen asti.\"</p></div><p class=\"narrative\"><em>Tämä on teon julistus. Aikaa neuvotteluille ei enää ole.</em></p></div>"
+      "html": "<div class=\"scene\"><h1>Viimeinen voitelu — yleisesikunnan karttahuone</h1><p class=\"narrative\">Iso kartta Gansusta ja Xinjiangista levittäytyy pöydälle. Reitit on merkitty punaisella. Trepov ja K.F. seisovat kartan molemmin puolin.</p><div class=\"npc-intro\"><p><strong>Trepov</strong>:</p><p>\"Kiinan lohikäärme nukkuu, Mannerheim. Mutta jos se herää, maailma muuttuu. Venäjä ei saa jäädä jalkoihin.\"</p></div><div class=\"npc-intro\"><p><strong>K.F.</strong>:</p><p>\"Tehtävänne on selvä. Arvioikaa Kiinan sotilaalliset voimavarat. Kartoittakaa reitit. Tunnistakaa liittolaiset ja viholliset.\"</p><p>\"Te esitätte raporttinne keisarille itselleen — jos elätte siihen asti.\"</p></div><p class=\"narrative\"><em>Tämä on teon julistus. Aikaa neuvotteluille ei enää ole.</em></p></div>"
     },
     {
       "scene_id": "7_sokolov_departure",
-      "name": "Scene 7: Moskovan Juna-aseman Laiturit",
+      "name": "Scene 7: Moskovan juna-aseman Laiturit",
       "image": "images/prologue/scene_7.png",
       "color_palette": {
         "primary": "#3a3a4a",
@@ -103,7 +103,7 @@
         "mood": "anticipation, cold, departure",
         "sound": ["train_whistle", "steam_hiss", "boots_on_platform"]
       },
-      "html": "<div class=\"scene\"><h1>Moskovan Juna-aseman Laiturit</h1><p class=\"narrative\">Junavaunu puhkuu höyryä kylmään aamuun. Matkustajia kiirehtii perheenjäsentensä kanssa. Sotilaat marssivat järjestyksessä.</p><div class=\"npc-intro\"><p><strong>Sokolov</strong> (kasakka):</p><p>\"Herra eversti! Olen lähetetty turvaksenne. Nimi on Sokolov.\"</p><p>\"Tie etelään on täynnä miestä, joka haluaisi rahanne — tai päänne. Mutta te olette turvassa, kunhan pysytte lähellä minua ja miehiäni.\"</p><p>\"Oletteko valmis, eversti? Matka on pitkä ja vaarallinen. Mutta jos selviämme, teistä tulee legenda.\"</p></div><p class=\"narrative-end\"><em>Juna nytkähtää liikkeelle. Pietarin kaupunki jää taakse. Matka Aasiaan alkaa.</em></p><p class=\"narrative-end\"><strong>ENSIMMÄINEN NÄYTTÄMÖ — TIE ETELÄÄN</strong></p></div>"
+      "html": "<div class=\"scene\"><h1>Moskovan juna-aseman laituri</h1><p class=\"narrative\">Junavaunu puhkuu höyryä kylmässä aamussa. Matkustajia kiirehtii perheenjäsentensä kanssa. Sotilaat marssivat veltosti.</p><div class=\"npc-intro\"><p><strong>Sokolov</strong> (kasakka):</p><p>\"Herra eversti! Olen lähetetty turvaksenne. Nimi on Sokolov.\"</p><p>\"Tie etelään on täynnä miehiä, joka haluaisivat rahanne — tai päänne. Mutta te olette turvassa, kunhan pysytte lähellä minua ja miehiäni.\"</p><p>\"Oletteko valmis, herra eversti? Matka on pitkä ja vaarallinen. Mutta jos selviämme, teistä voi tulla legenda.\"</p></div><p class=\"narrative-end\"><em>Juna nytkähtää liikkeelle. Pietarin kaupunki jää taakse. Matka Aasiaan alkaa.</em></p><p class=\"narrative-end\"><strong>ENSIMMÄINEN NÄYTTÄMÖ — TIE ETELÄÄN</strong></p></div>"
     }
   ]
 }
