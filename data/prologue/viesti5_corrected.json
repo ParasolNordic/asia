@@ -33,6 +33,7 @@
     {
       "scene_id": "3_kf_briefing",
       "name": "Scene 3: K.F.:n Salainen Brieffi",
+      "image": "images/prologue/scene_3.jpg",
       "color_palette": {
         "primary": "#3a4a3a",
         "secondary": "#7a8a7a",
