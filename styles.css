@@ -219,18 +219,53 @@ main {
   margin-bottom: 0.5rem;
 }
 
+.npc-phase {
+  color: #999;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
 .npc-background {
   color: #555;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   line-height: 1.6;
+}
+
+.npc-motivations {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.npc-motivations strong {
+  color: var(--primary-color);
 }
 
 .npc-personality {
   color: #777;
   font-size: 0.95rem;
-  font-style: italic;
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.npc-personality strong {
+  color: var(--primary-color);
+  font-style: normal;
+}
+
+.npc-role {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+  line-height: 1.5;
+}
+
+.npc-role strong {
+  color: var(--primary-color);
 }
 
 /* Choices container */
