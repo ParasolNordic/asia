@@ -30,17 +30,37 @@ class AIWorker {
       name: this.getNPCName(npcId),
       personality: 'formal, diplomatic',
       goals: ['complete mission'],
-      background: 'Russian official'
+      background: 'Russian official',
+      role: 'Official'
     };
     
     try {
-      // Yritä hakea oikea profiili
+      // Yritä hakea oikea profiili npcs.json:sta
       let baseProfile = null;
       
-      // npcs voi olla { npcs: [...] } TAI suoraan array
       if (this.npcs) {
+        // npcs.json käyttää suomenkielisiä kenttiä
         const npcList = Array.isArray(this.npcs) ? this.npcs : (this.npcs.npcs || []);
-        baseProfile = npcList.find(n => n && n.id === npcId);
+        const npcData = npcList.find(n => {
+          if (!n || !n.Nimi) return false;
+          // Tarkista nimi-match (case-insensitive)
+          const name = n.Nimi.toLowerCase();
+          const searchName = this.getNPCName(npcId).toLowerCase();
+          return name === searchName || name.includes(searchName) || searchName.includes(name);
+        });
+        
+        if (npcData) {
+          // Muunna suomenkieliset kentät englanniksi
+          baseProfile = {
+            id: npcId,
+            name: npcData.Nimi,
+            background: npcData.Tausta || fallbackProfile.background,
+            motivations: npcData.Motivaatiot || '',
+            speech_style: npcData.Puhetapa || fallbackProfile.personality,
+            role: npcData.Rooli || fallbackProfile.role,
+            phase: npcData.Kasikirjoituksen_vaihe || ''
+          };
+        }
       }
       
       // AI profile viesti4.json:sta
@@ -50,12 +70,19 @@ class AIWorker {
         aiProfile = aiList.find(n => n && n.id === npcId);
       }
       
-      // Yhdistä tai käytä fallbackia
+      // Yhdistä profiilit
       const profile = {
         ...fallbackProfile,
         ...(baseProfile || {}),
         ...(aiProfile || {})
       };
+      
+      // Varmista että personality on olemassa (yhteensopivuus AI-promptien kanssa)
+      if (!profile.personality && profile.speech_style) {
+        profile.personality = profile.speech_style;
+      }
+      
+      console.log(`✅ Loaded NPC profile for ${npcId}:`, profile.name);
       
       this.npcCache.set(npcId, profile);
       return profile;
@@ -144,13 +171,36 @@ class AIWorker {
    * Rakenna system prompt NPC:lle
    */
   buildSystemPrompt(npcProfile, sceneId, gameState) {
+    // Käytä npcs.json motivaatioita jos saatavilla
+    const motivations = npcProfile.motivations || (npcProfile.goals ? npcProfile.goals.join(', ') : 'complete mission');
+    const personality = npcProfile.personality || npcProfile.speech_style || 'formal, diplomatic';
+    
     const prompt = `You are ${npcProfile.name}, a character in a historical game set in 1906.
 
-PERSONALITY: ${npcProfile.personality || 'formal, diplomatic'}
 BACKGROUND: ${npcProfile.background || 'Russian official'}
-GOALS: ${(npcProfile.goals || ['complete mission']).join(', ')}
+
+MOTIVATIONS: ${motivations}
+
+SPEECH STYLE: ${personality}
+
+${npcProfile.role ? `ROLE: ${npcProfile.role}` : ''}
 
 IMPORTANT RULES:
+1. Stay in character as ${npcProfile.name}
+2. Respond in Finnish (suomi)
+3. Keep response under 100 words
+4. Be historically appropriate (1906 Russia/Central Asia)
+5. Reference the player's statement directly
+6. Match the speech style described above
+
+The player is Mannerheim, a Russian officer on a secret mission to Central Asia.
+
+Current situation: Scene ${sceneId}
+
+Respond naturally and in character.`;
+
+    return prompt;
+  }
 1. Stay in character as ${npcProfile.name}
 2. Respond in Finnish (suomi)
 3. Keep response under 100 words
