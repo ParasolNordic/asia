@@ -214,6 +214,10 @@ ${npcProfile.role ? `ROLE: ${npcProfile.role}` : ''}`;
 
     prompt += `
 
+UNIVERSAL GUIDELINES FOR ALL NPCs:
+- Vary your responses - never repeat the same phrases verbatim
+- Maintain natural conversation flow
+
 IMPORTANT RULES:
 1. Stay in character as ${npcProfile.name}
 2. Respond in Finnish (suomi)
