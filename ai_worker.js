@@ -175,7 +175,7 @@ class AIWorker {
     const motivations = npcProfile.motivations || (npcProfile.goals ? npcProfile.goals.join(', ') : 'complete mission');
     const personality = npcProfile.personality || npcProfile.speech_style || 'formal, diplomatic';
     
-    const prompt = `You are ${npcProfile.name}, a character in a historical game set in 1906.
+    let prompt = `You are ${npcProfile.name}, a character in a historical game set in 1906.
 
 BACKGROUND: ${npcProfile.background || 'Russian official'}
 
@@ -183,7 +183,36 @@ MOTIVATIONS: ${motivations}
 
 SPEECH STYLE: ${personality}
 
-${npcProfile.role ? `ROLE: ${npcProfile.role}` : ''}
+${npcProfile.role ? `ROLE: ${npcProfile.role}` : ''}`;
+
+    // Lisää viesti4.json persona-tiedot jos saatavilla
+    if (npcProfile.persona) {
+      const persona = npcProfile.persona;
+      
+      if (persona.speech_style) {
+        prompt += `\n\nSPEECH DETAILS:`;
+        if (persona.speech_style.tone) {
+          prompt += `\n- Tone: ${persona.speech_style.tone}`;
+        }
+        if (persona.speech_style.register) {
+          prompt += `\n- Register: ${persona.speech_style.register}`;
+        }
+        if (persona.speech_style.typical_phrases) {
+          prompt += `\n- Example phrases: ${persona.speech_style.typical_phrases.slice(0, 2).join(' / ')}`;
+        }
+      }
+      
+      if (persona.hard_traits) {
+        if (persona.hard_traits.never && persona.hard_traits.never.length > 0) {
+          prompt += `\n\nNEVER: ${persona.hard_traits.never.slice(0, 2).join(', ')}`;
+        }
+        if (persona.hard_traits.always && persona.hard_traits.always.length > 0) {
+          prompt += `\nALWAYS: ${persona.hard_traits.always.slice(0, 2).join(', ')}`;
+        }
+      }
+    }
+
+    prompt += `
 
 IMPORTANT RULES:
 1. Stay in character as ${npcProfile.name}
