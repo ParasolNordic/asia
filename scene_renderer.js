@@ -72,7 +72,7 @@ class SceneRenderer {
       <div class="npc-profile-card">
         <h3>${npcProfile.name}</h3>
         <p class="npc-background">${npcProfile.background || 'Venäläinen virkamies'}</p>
-        ${npcProfile.personality ? `<p class="npc-personality"><em>${npcProfile.personality}</em></p>` : ''}
+        }
       </div>
     `;
 
