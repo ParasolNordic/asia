@@ -125,7 +125,7 @@ class AIWorker {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
-          max_tokens: 150,
+          max_tokens: 300,
           system: systemPrompt,
           messages: [
             { role: 'user', content: playerText }
