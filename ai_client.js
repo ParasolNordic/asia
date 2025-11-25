@@ -2,12 +2,12 @@
  * AI Client - Cloudflare Workers AI Proxy Integration
  * 
  * Käyttää Cloudflare Workers -proxya kommunikoidakseen Claude API:n kanssa.
- * Proxy-URL: https://ai-proxy.arkisto-kaksi.workers.dev
+ * Proxy-URL: https://ai.miltton-ai.workers.dev
  */
 
 class AIClient {
   constructor(config = {}) {
-    this.proxyURL = config.proxyURL || 'https://ai-proxy.arkisto-kaksi.workers.dev';
+    this.proxyURL = config.proxyURL || 'https://ai.miltton-ai.workers.dev';
     this.model = config.model || 'claude-sonnet-4-20250514';
     // OPTIMOITU: 150 tokenia ≈ 500 merkkiä (suomi on token-raskaampi kuin englanti)
     this.maxTokens = config.maxTokens || 150;
