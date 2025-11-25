@@ -50,7 +50,7 @@ class GameEngine {
           
           this.aiClient = new AIClient({
             proxyURL: window.AI_PROXY_URL || 'https://ai.miltton-ai.workers.dev',
-            maxTokens: 300
+            maxTokens: 400
           });
           
           this.aiWorker = new AIWorker({
