@@ -49,8 +49,8 @@ class GameEngine {
           console.log('🤖 Initializing AI modules...');
           
           this.aiClient = new AIClient({
-            proxyURL: window.AI_PROXY_URL || 'https://ai-proxy.arkisto-kaksi.workers.dev',
-            maxTokens: 150
+            proxyURL: window.AI_PROXY_URL || 'https://ai.miltton-ai.workers.dev',
+            maxTokens: 300
           });
           
           this.aiWorker = new AIWorker({
