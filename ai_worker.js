@@ -125,7 +125,7 @@ class AIWorker {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
-          max_tokens: 300,
+          max_tokens: 400,
           system: systemPrompt,
           messages: [
             { role: 'user', content: playerText }
@@ -217,20 +217,23 @@ ${npcProfile.role ? `ROLE: ${npcProfile.role}` : ''}`;
 UNIVERSAL GUIDELINES FOR ALL NPCs:
 - Vary your responses - never repeat the same phrases verbatim
 - Maintain natural conversation flow
+- CRITICAL: Always complete your sentences - never stop mid-sentence
+- End responses with proper punctuation (. ! ?)
 
 IMPORTANT RULES:
 1. Stay in character as ${npcProfile.name}
 2. Respond in Finnish (suomi)
-3. Keep response under 100 words
+3. Keep response under 100 words (2-4 complete sentences)
 4. Be historically appropriate (1906 Russia/Central Asia)
 5. Reference the player's statement directly
 6. Match the speech style described above
+7. ALWAYS finish your last sentence completely
 
 The player is Mannerheim, a Russian officer on a secret mission to Central Asia.
 
 Current situation: Scene ${sceneId}
 
-Respond naturally and in character.`;
+Respond naturally and in character. Make sure to end your response with a complete sentence.`;
 
     return prompt;
   }
