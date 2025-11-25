@@ -9,7 +9,7 @@ class AIWorker {
     this.npcRules = gameData.npcRules;
     this.moduleDiplomacy = gameData.moduleDiplomacy;
     this.aiProfiles = gameData.aiProfiles;
-    this.proxyURL = config.proxyURL || 'https://ai-proxy.arkisto-kaksi.workers.dev';
+    this.proxyURL = config.proxyURL || 'https://ai.miltton-ai.workers.dev';
     this.npcCache = new Map();
     
     console.log('🤖 AIWorker initialized');
@@ -118,18 +118,18 @@ class AIWorker {
       
       // Rakenna prompt
       const systemPrompt = this.buildSystemPrompt(npcProfile, sceneId, gameState);
-      const messages = [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: playerText }
-      ];
       
       // Kutsu AI:ta
       const response = await fetch(this.proxyURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: messages,
-          max_tokens: 150
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 150,
+          system: systemPrompt,
+          messages: [
+            { role: 'user', content: playerText }
+          ]
         })
       });
       
@@ -143,7 +143,7 @@ class AIWorker {
       console.log('📦 Raw AI response:', data);
       console.log('📝 Content array:', data.content);
       console.log('📄 First content:', data.content?.[0]);
-      console.log('✍️ Text:', data.content?.[0]?.text);
+      console.log('✏️ Text:', data.content?.[0]?.text);
       
       const npcResponse = data.content?.[0]?.text || 'Anteeksi, en voi vastata juuri nyt.';
       console.log('💬 Final NPC response:', npcResponse);
