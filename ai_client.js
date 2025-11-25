@@ -9,8 +9,8 @@ class AIClient {
   constructor(config = {}) {
     this.proxyURL = config.proxyURL || 'https://ai.miltton-ai.workers.dev';
     this.model = config.model || 'claude-sonnet-4-20250514';
-    // OPTIMOITU: 150 tokenia ≈ 500 merkkiä (suomi on token-raskaampi kuin englanti)
-    this.maxTokens = config.maxTokens || 150;
+    // OPTIMOITU: 300 tokenia ≈ 800-1000 merkkiä suomeksi (riittää kokonaisille vastauksille)
+    this.maxTokens = config.maxTokens || 300;
     this.timeout = config.timeout || 30000; // 30 seconds
     
     // Token-kustannusten seuranta
@@ -46,7 +46,7 @@ class AIClient {
    * TAVOITE: Minimoida input-tokeneja säilyttäen laatu
    * - Lyhyet, ytimekkäät ohjeet
    * - Vain kriittisin tieto
-   * - Max 500 merkkiä vastaukseen (≈150 tokenia)
+   * - Max 800-1000 merkkiä vastaukseen (≈300 tokenia)
    */
   buildPrompt(npcProfile, playerText, gameState) {
     const { persona, dialogue_output_rules } = npcProfile;
